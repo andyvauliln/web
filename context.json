@@ -1,0 +1,252 @@
+{
+    "file_name": "schema.ts", 
+    "purpose_of_file": "Defines the database schema for the T3 Gallery project, including table creation and indexing for image storage.", 
+    "file_functions": [
+        {
+            "function_name": "createTable",
+            "purpose_of_function": "Generates a function to create tables with a prefixed name specific to the T3 Gallery project.",
+            "params": [
+                {
+                    "param_name": "name", 
+                    "param_type": "string",
+                    "param_value": ""
+                }
+            ], 
+            "return_values": [
+                {
+                    "return_name": "TableCreationFunction", 
+                    "return_type": "Function",
+                    "return_value": ""
+                }
+            ]
+        },
+        {
+            "function_name": "images",
+            "purpose_of_function": "Creates the 'images' table with fields for id, name, url, userId, createdAt, and updatedAt.",
+            "params": [], 
+            "return_values": [
+                {
+                    "return_name": "imagesTable", 
+                    "return_type": "Table",
+                    "return_value": ""
+                }
+            ]
+        }
+    ],
+    "file_properties": [
+        {
+            "field_name": "images", 
+            "field_type": "Table",
+            "field_value": ""
+        }
+    ]
+},
+{
+    "file_name": "provider.tsx", 
+    "purpose_of_file": "Implements the analytics provider using PostHog for the T3 Gallery project, including user identification and event tracking.", 
+    "file_functions": [
+        {
+            "function_name": "CSPostHogProvider",
+            "purpose_of_function": "Wraps the application's components with the PostHog analytics provider.",
+            "params": [
+                {
+                    "param_name": "children", 
+                    "param_type": "React.ReactNode",
+                    "param_value": ""
+                }
+            ], 
+            "return_values": [
+                {
+                    "return_name": "", 
+                    "return_type": "JSX.Element",
+                    "return_value": ""
+                }
+            ]
+        },
+        {
+            "function_name": "PostHogAuthWrapper",
+            "purpose_of_function": "Handles user identification for analytics tracking, including sign-in state changes.",
+            "params": [
+                {
+                    "param_name": "children", 
+                    "param_type": "React.ReactNode",
+                    "param_value": ""
+                }
+            ], 
+            "return_values": [
+                {
+                    "return_name": "", 
+                    "return_type": "React.ReactNode",
+                    "return_value": ""
+                }
+            ]
+        }
+    ],
+    "file_properties": []
+},
+{
+    "file_name": "topnav.tsx",
+    "purpose_of_file": "Provides the top navigation bar component for the application.",
+    "file_functions": [
+        {
+            "function_name": "TopNav",
+            "purpose_of_function": "Renders the top navigation bar.",
+            "params": [],
+            "return_values": [
+                {
+                    "return_name": "",
+                    "return_type": "JSX.Element",
+                    "return_value": ""
+                }
+            ]
+        }
+    ],
+    "file_properties": []
+},
+{
+    "file_name": "uploadthing/core.ts",
+    "purpose_of_file": "Core functionality for handling file uploads.",
+    "file_functions": [
+        {
+            "function_name": "uploadFile",
+            "purpose_of_function": "Handles the uploading of files.",
+            "params": [
+                {
+                    "param_name": "file",
+                    "param_type": "File",
+                    "param_value": ""
+                }
+            ],
+            "return_values": [
+                {
+                    "return_name": "uploadResult",
+                    "return_type": "Promise<UploadResult>",
+                    "return_value": ""
+                }
+            ]
+        }
+    ],
+    "file_properties": []
+},
+{
+    "file_name": "layout.tsx",
+    "purpose_of_file": "Defines the main layout structure used across the application.",
+    "file_functions": [
+        {
+            "function_name": "MainLayout",
+            "purpose_of_function": "Provides the layout structure including header, footer, and main content area.",
+            "params": [
+                {
+                    "param_name": "children",
+                    "param_type": "React.ReactNode",
+                    "param_value": ""
+                }
+            ],
+            "return_values": [
+                {
+                    "return_name": "",
+                    "return_type": "JSX.Element",
+                    "return_value": ""
+                }
+            ]
+        }
+    ],
+    "file_properties": []
+},
+{
+    "file_name": "page.tsx",
+    "purpose_of_file": "Renders the main page of the application.",
+    "file_functions": [
+        {
+            "function_name": "HomePage",
+            "purpose_of_function": "Renders the homepage content.",
+            "params": [],
+            "return_values": [
+                {
+                    "return_name": "",
+                    "return_type": "JSX.Element",
+                    "return_value": ""
+                }
+            ]
+        }
+    ],
+    "file_properties": []
+},
+{
+    "file_name": "analytics.ts",
+    "purpose_of_file": "Handles analytics logic and integration within the server-side of the application.",
+    "file_functions": [
+        {
+            "function_name": "initAnalytics",
+            "purpose_of_function": "Initializes the analytics service with necessary configurations.",
+            "params": [],
+            "return_values": []
+        }
+    ],
+    "file_properties": []
+},
+{
+    "file_name": "queries.ts",
+    "purpose_of_file": "Contains database query functions for various data retrieval and manipulation operations.",
+    "file_functions": [
+        {
+            "function_name": "getUserImages",
+            "purpose_of_function": "Retrieves images uploaded by a specific user.",
+            "params": [
+                {
+                    "param_name": "userId",
+                    "param_type": "string",
+                    "param_value": ""
+                }
+            ],
+            "return_values": [
+                {
+                    "return_name": "images",
+                    "return_type": "Array<Image>",
+                    "return_value": ""
+                }
+            ]
+        }
+    ],
+    "file_properties": []
+},
+{
+    "file_name": "next.config.js",
+    "purpose_of_file": "Configures Next.js specific features and behaviors such as build settings.",
+    "file_functions": [],
+    "file_properties": [
+        {
+            "field_name": "reactStrictMode",
+            "field_type": "boolean",
+            "field_value": "true"
+        },
+        {
+            "field_name": "images",
+            "field_type": "object",
+            "field_properties": [
+                {
+                    "field_name": "domains",
+                    "field_type": "Array<string>",
+                    "field_value": "[\"example.com\"]"
+                }
+            ]
+        }
+    ]
+},
+{
+    "file_name": "tailwind.config.ts",
+    "purpose_of_file": "Configures Tailwind CSS for styling the application.",
+    "file_functions": [],
+    "file_properties": [
+        {
+            "field_name": "content",
+            "field_type": "Array<string>",
+            "field_value": "[\"./src/**/*.{js,ts,jsx,tsx}\"]"
+        },
+        {
+            "field_name": "theme",
+            "field_type": "object",
+            "field_properties": []
+        }
+    ]
+}
