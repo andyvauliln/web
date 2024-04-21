@@ -19,7 +19,6 @@ export default function TabsLandContent() {
     const [value, setValue] = useAtom(contentTypeAtom)
     const [isOpen, setIsOpen] = useState(false);
     const [landData, setLandData] = React.useState<FeatureCollection | null>(null);
-    console.log("TabsLandContent.value", value)
 
     React.useEffect(() => {
         async function fetchLandData() {

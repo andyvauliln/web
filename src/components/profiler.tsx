@@ -4,7 +4,7 @@ import React, { Profiler, ProfilerProps, ReactNode } from 'react';
 interface CustomProfilerProps extends Omit<Partial<Required<ProfilerProps>>, 'children'> {
     children: ReactNode;
     onRender?: ProfilerProps['onRender'];
-  }
+}
 
 //@ts-ignore
 const callback: ProfilerProps['onRender'] = (
@@ -16,19 +16,19 @@ const callback: ProfilerProps['onRender'] = (
     commitTime: number, // when React committed this update
     interactions: Set<any> // the Set of interactions belonging to this update
 ) => {
-  console.log(`${id}: ${phase} \nFrom Scratch: ${baseDuration.toFixed(3)}ms \nWith Memo: ${actualDuration.toFixed(3)}ms`);
+    console.log(`${id}: ${phase} \nFrom Scratch: ${baseDuration.toFixed(3)}ms \n With Memo (Actual): ${actualDuration.toFixed(3)}ms`);
 };
 
-export const CustomProfiler: React.FC<CustomProfilerProps> = ({ children, onRender=callback, id='defaultProfilerId', ...props }) => {
+export const CustomProfiler: React.FC<CustomProfilerProps> = ({ children, onRender = callback, id = 'defaultProfilerId', ...props }) => {
     const isProfilerEnabled = process.env.NEXT_PUBLIC_IS_PROFILER_ENABLED === 'true';
-  
+
     if (isProfilerEnabled) {
-      return (
-        <Profiler id={id} onRender={callback} {...props}>
-          {children}
-        </Profiler>
-      );
+        return (
+            <Profiler id={id} onRender={callback} {...props}>
+                {children}
+            </Profiler>
+        );
     }
-  
+
     return <>{children}</>;
-  };
+};
