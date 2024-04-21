@@ -1,16 +1,15 @@
 //import { SignedIn, SignedOut } from "@clerk/nextjs";
-//import Images from "./_components/images";
-import GoogleMap from "../components/maps/google";
-//import DeckMap from "./_components/maps/deck";
-import TopTabs from "~/components/top_tabs";
-
+'use client'
+import TopTabs from "~/components/top-tabs";
 export const dynamic = "force-dynamic";
 
 
-export default async function HomePage() {
+export default function HomePage() {
+ 
   return (
     <>
      <TopTabs />
+   
     </>
   );
 }

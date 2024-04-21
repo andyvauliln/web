@@ -1,11 +1,14 @@
-import { getLands } from '~/server/lands'; import type { NextApiRequest, NextApiResponse } from 'next';
+import { getLands } from '~/server/lands'; 
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) { console.log("Request method api/lands:", req.method); if (req.method !== 'GET') { res.setHeader('Allow', ['GET']); return res.status(405).end(Method ${req.method} Not Allowed); }
+export async function GET(req: NextRequest, res: NextResponse) { 
+  console.log("Request method api/lands:"); 
 
-try {
-  const lands = await getLands();
-  res.status(200).json(lands);
-} catch (error) {
-  res.status(500).json({ error: "Error fetching lands data" });
+  try {
+    const lands = await getLands();
+    return NextResponse.json(lands);
+  } catch (error) {
+    return NextResponse.json({ error: "Error fetching lands data" });
+  }
 }
-}
+

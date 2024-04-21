@@ -6,10 +6,13 @@
 import { TabsTrigger, TabsList, TabsContent, Tabs } from "~/components/ui/tabs"
 import { CardTitle, CardDescription, CardHeader, CardContent, CardFooter, Card } from "~/components/ui/card"
 import { Button } from "~/components/ui/button"
+import TabsLandContent from "./tabs_land_content"
+import {MapProvider} from 'react-map-gl';
 
-export function TopTabs() {
+export default function TopTabs() {
   return (
-    <Tabs key="1" className="w-full" defaultValue="lands">
+    <MapProvider>
+    <Tabs key="1" className="flex flex-col h-full w-full" defaultValue="lands">
       <TabsList className="grid w-full grid-cols-9 sm:grid-cols-3 md:grid-cols-5 gap-2">
         <TabsTrigger value="lands">Lands</TabsTrigger>
         <TabsTrigger value="events">Events</TabsTrigger>
@@ -20,18 +23,11 @@ export function TopTabs() {
         <TabsTrigger value="attractions">Attractions</TabsTrigger>
         <TabsTrigger value="special-offers">Special Offers</TabsTrigger>
         <TabsTrigger value="services">Services</TabsTrigger>
+        <TabsTrigger value="suppliers">Suppliers</TabsTrigger>
       </TabsList>
-      <TabsContent value="lands">
-        <Card>
-          <CardHeader>
-            <CardTitle>Lands</CardTitle>
-            <CardDescription>Browse and explore our selection of lands.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2" />
-          <CardFooter>
-            <Button>View Lands</Button>
-          </CardFooter>
-        </Card>
+      <TabsContent value="lands" className="w-full h-full">
+        <TabsLandContent />
+        
       </TabsContent>
       <TabsContent value="events">
         <Card>
@@ -129,6 +125,19 @@ export function TopTabs() {
           </CardFooter>
         </Card>
       </TabsContent>
+      <TabsContent value="suppliers">
+        <Card>
+          <CardHeader>
+            <CardTitle>Suppliers</CardTitle>
+            <CardDescription>Explore the services we offer to make your stay more enjoyable.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2" />
+          <CardFooter>
+            <Button>View Suppliers</Button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
     </Tabs>
+    </MapProvider>
   )
 }
