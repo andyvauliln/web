@@ -9,7 +9,7 @@ const coreConfig = {
   images: {
     remotePatterns: [{ hostname: "utfs.io" }],
   },
-  profiler: true,
+  // profiler: true,
   typescript: {
     ignoreBuildErrors: true,
   },

@@ -8,7 +8,7 @@ type ContentTypeSwittcherProps = {
 };
 
 export default function ContentTypeSwittcher({ value, onChange }: ContentTypeSwittcherProps): JSX.Element {
-  console.log("ContentTypeSwittcher.value",value)
+
   return (
     <div className="flex items-center space-x-2" onClick={onChange}>
       <Switch id={value} onClick={onChange} checked={value === "map"} />

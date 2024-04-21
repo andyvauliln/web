@@ -35,7 +35,7 @@ const onHover = React.useCallback((event: any) => {
     } = event;
     console.log("event: ", event)
     const hoveredFeature = features && features[0];
-    console.log("Feature: ", features)
+    //console.log("Feature: ", features)
 
    setHoverInfo(hoveredFeature && {feature: hoveredFeature, x, y, lat: event.lngLat.lat, lng: event.lngLat.lng});
     }, []);

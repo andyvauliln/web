@@ -6,7 +6,10 @@ import { useEffect } from "react";
 
 export default function GlobalError(props: { error: unknown }) {
   useEffect(() => {
-    Sentry.captureException(props.error);
+    if (process.env.NODE_ENV === "production") {
+      Sentry.captureException(props.error);
+    }
+    console.error(props.error);
   }, [props.error]);
 
   return (
@@ -17,3 +20,4 @@ export default function GlobalError(props: { error: unknown }) {
     </html>
   );
 }
+
