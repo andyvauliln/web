@@ -46,10 +46,15 @@ export default function RootLayout({
           />
           <body className={`font-sans ${inter.variable} flex flex-col h-screen`}>
 
-              <TopNav />
-              <main className="overflow-y-scroll flex flex-grow w-full">{children}</main>
-              {modal}
-              <WebVitals/>
+            <TopNav />
+            <main className="overflow-y-scroll flex flex-grow w-full">{children}</main>
+            <CardFooter>
+              <ContentTypeSwittcher value={value} onChange={(): void => {
+                setValue(value === 'Map' ? 'List' : 'Map');
+              }} />
+            </CardFooter>
+            {modal}
+            <WebVitals />
             <div id="modal-root" />
             <Toaster />
           </body>

@@ -1,9 +1,10 @@
 'use client'
-import ContentTypeSwittcher from "~/components/content_type_swittcher"
+import ContentTypeSwittcher from "~/components/content-type-swittcher"
 import { CardHeader, CardContent, CardFooter, Card } from "~/components/ui/card"
-import Details from "~/components/details";
+import LandDetails from "~/components/land-details";
 import { Button } from "~/components/ui/button"
 import LandMap from "./land-map"
+import DeckMap from "./deck-map"
 import LandList from "./land-list"
 import { atomWithStorage } from 'jotai/utils'
 import { useAtom } from 'jotai'
@@ -11,13 +12,16 @@ import React, { useState } from "react";
 import type { FeatureCollection, Feature } from 'geojson';
 import type { Land } from '~/server/lands';
 import { CustomProfiler } from '~/components/profiler'
+import LandOfferTypes from "./land-offer-types";
 
 type ContentType = 'Map' | 'List';
 const contentTypeAtom = atomWithStorage<ContentType>('land_content_type', "Map")
+const currentLandAtom = atomWithStorage<Feature | null>('currentLand', null)
 
 export default function TabsLandContent() {
     const [value, setValue] = useAtom(contentTypeAtom)
     const [isOpen, setIsOpen] = useState(false);
+    const [currentLand, setCurrentLand] = useState<Feature | null | undefined>(null);
     const [landData, setLandData] = React.useState<FeatureCollection | null>(null);
 
     React.useEffect(() => {
@@ -45,24 +49,39 @@ export default function TabsLandContent() {
 
         fetchLandData();
     }, []);
+
+    const onLandClick = (feature: Feature | null) => {
+        setCurrentLand(feature)
+        setIsOpen(true)
+    }
+
     return (
         <CustomProfiler id="CardTabComponent">
             <Card className="h-full w-full flex flex-col">
                 <CardHeader>
-                    <Button>Mine Lands</Button>
+                    <LandOfferTypes />
                 </CardHeader>
                 <CardContent className="flex-grow">
-                    {value === 'Map' ? <LandMap mapData={landData} onClick={() => setIsOpen(!isOpen)} /> : <LandList />}
+                    {/* {value === 'Map' ? <DeckMap /> : <LandList />} */}
+                    {value === 'Map' ? <LandMap mapData={landData} onClick={onLandClick} /> : <LandList />}
                 </CardContent>
                 {/* <Button variant="outline" onClick={() => setIsOpen(!isOpen)}>Open</Button> */}
 
-                <CardFooter>
-                    <ContentTypeSwittcher value={value} onChange={(): void => {
-                        setValue(value === 'Map' ? 'List' : 'Map');
-                    }} />
-                </CardFooter>
-                <Details isOpen={isOpen} setIsOpen={setIsOpen} />
+
+                <LandDetails isOpen={isOpen} setIsOpen={setIsOpen} currentLand={currentLand} />
             </Card>
         </CustomProfiler>
     )
 }
+
+// Map/List
+// Saved Lands
+// Mine Lads
+// Show Sold Lands
+// Rent/Buy/All
+// From Agents/Owners
+// With Due Deligence
+// With Videos
+// With Photos
+// Zones
+

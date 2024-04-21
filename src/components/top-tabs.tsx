@@ -6,138 +6,34 @@
 import { TabsTrigger, TabsList, TabsContent, Tabs } from "~/components/ui/tabs"
 import { CardTitle, CardDescription, CardHeader, CardContent, CardFooter, Card } from "~/components/ui/card"
 import { Button } from "~/components/ui/button"
-import TabsLandContent from "./tabs_land_content"
-import {MapProvider} from 'react-map-gl';
+import TabsLandContent from "./tabs-land-content"
+import { MapProvider } from 'react-map-gl';
 
 export default function TopTabs() {
+  const tabsArray = [
+    { value: 'lands', title: 'Lands', component: <TabsLandContent /> },
+    { value: 'events', title: 'Events', component: <div className="flex h-full items-center justify-center text-3xl">In Development</div> },
+    { value: 'eat', title: 'Eat', component: <div className="flex h-full items-center justify-center text-3xl">In Development</div> },
+    { value: 'sleep', title: 'Sleep', component: <div className="flex h-full items-center justify-center text-3xl">In Development</div> },
+    { value: 'attractions', title: 'Visit', component: <div className="flex h-full items-center justify-center text-3xl">In Development</div> },
+    { value: 'services', title: 'Services', component: <div className="flex h-full items-center justify-center text-3xl">In Development</div> },
+    { value: 'suppliers', title: 'Goods', component: <div className="flex h-full items-center justify-center text-3xl">In Development</div> },
+    // { value: 'vip', title: 'VIP', component: <div className="flex h-full items-center justify-center text-3xl">In Development</div> },
+    { value: 'info', title: 'Info', component: <div className="flex h-full items-center justify-center text-3xl">In Development</div> },
+  ];
+
   return (
-    <MapProvider>
     <Tabs key="1" className="flex flex-col h-full w-full" defaultValue="lands">
-      <TabsList className="grid w-full grid-cols-9 sm:grid-cols-3 md:grid-cols-5 gap-2">
-        <TabsTrigger value="lands">Lands</TabsTrigger>
-        <TabsTrigger value="events">Events</TabsTrigger>
-        <TabsTrigger value="restaurants">Restaurants</TabsTrigger>
-        <TabsTrigger value="villas">Villas</TabsTrigger>
-        <TabsTrigger value="hotels">Hotels</TabsTrigger>
-        <TabsTrigger value="long-term-rent">Long Term Rent</TabsTrigger>
-        <TabsTrigger value="attractions">Attractions</TabsTrigger>
-        <TabsTrigger value="special-offers">Special Offers</TabsTrigger>
-        <TabsTrigger value="services">Services</TabsTrigger>
-        <TabsTrigger value="suppliers">Suppliers</TabsTrigger>
+      <TabsList className="grid w-full grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-2">
+        {tabsArray.map(tab => (
+          <TabsTrigger key={tab.value} value={tab.value}>{tab.title}</TabsTrigger>
+        ))}
       </TabsList>
-      <TabsContent value="lands" className="w-full h-full">
-        <TabsLandContent />
-        
-      </TabsContent>
-      <TabsContent value="events">
-        <Card>
-          <CardHeader>
-            <CardTitle>Events</CardTitle>
-            <CardDescription>Check out our upcoming events and activities.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2" />
-          <CardFooter>
-            <Button>View Events</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="restaurants">
-        <Card>
-          <CardHeader>
-            <CardTitle>Restaurants</CardTitle>
-            <CardDescription>Explore our selection of local and international restaurants.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2" />
-          <CardFooter>
-            <Button>View Restaurants</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="villas">
-        <Card>
-          <CardHeader>
-            <CardTitle>Villas</CardTitle>
-            <CardDescription>Browse our collection of luxurious villas.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2" />
-          <CardFooter>
-            <Button>View Villas</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="hotels">
-        <Card>
-          <CardHeader>
-            <CardTitle>Hotels</CardTitle>
-            <CardDescription>Discover our range of comfortable and affordable hotels.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2" />
-          <CardFooter>
-            <Button>View Hotels</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="long-term-rent">
-        <Card>
-          <CardHeader>
-            <CardTitle>Long Term Rent</CardTitle>
-            <CardDescription>Explore our selection of long-term rental properties.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2" />
-          <CardFooter>
-            <Button>View Long Term Rent</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="attractions">
-        <Card>
-          <CardHeader>
-            <CardTitle>Attractions</CardTitle>
-            <CardDescription>Discover the top attractions in the area.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2" />
-          <CardFooter>
-            <Button>View Attractions</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="special-offers">
-        <Card>
-          <CardHeader>
-            <CardTitle>Special Offers</CardTitle>
-            <CardDescription>Check out our current special offers and deals.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2" />
-          <CardFooter>
-            <Button>View Special Offers</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="services">
-        <Card>
-          <CardHeader>
-            <CardTitle>Services</CardTitle>
-            <CardDescription>Explore the services we offer to make your stay more enjoyable.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2" />
-          <CardFooter>
-            <Button>View Services</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="suppliers">
-        <Card>
-          <CardHeader>
-            <CardTitle>Suppliers</CardTitle>
-            <CardDescription>Explore the services we offer to make your stay more enjoyable.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2" />
-          <CardFooter>
-            <Button>View Suppliers</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
+      {tabsArray.map(tab => (
+        <TabsContent key={tab.value} value={tab.value} className="w-full h-full">
+          {tab.component}
+        </TabsContent>
+      ))}
     </Tabs>
-    </MapProvider>
   )
 }
