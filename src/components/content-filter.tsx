@@ -3,7 +3,7 @@ import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group"
 
 export function ContentFilter() {
     return (
-        <RadioGroup defaultValue="search">
+        <RadioGroup className="flex justify-between" defaultValue="search">
             <div className="flex items-center space-x-2">
                 <RadioGroupItem value="search" id="r1" />
                 <Label htmlFor="r1">Search</Label>

@@ -12,7 +12,8 @@ import React, { useState } from "react";
 import type { FeatureCollection, Feature } from 'geojson';
 import type { Land } from '~/server/lands';
 import { CustomProfiler } from '~/components/profiler'
-import LandOfferTypes from "./land-offer-types";
+import LandOfferTypes from "./land-filter";
+import { ContentFilter } from "./content-filter";
 
 type ContentType = 'Map' | 'List';
 const contentTypeAtom = atomWithStorage<ContentType>('land_content_type', "Map")
@@ -67,7 +68,17 @@ export default function TabsLandContent() {
                 </CardContent>
                 {/* <Button variant="outline" onClick={() => setIsOpen(!isOpen)}>Open</Button> */}
 
-
+                <CardFooter className="flex justify-between">
+                    <div className="flex">
+                        <ContentTypeSwittcher value={value} onChange={(): void => {
+                            setValue(value === 'Map' ? 'List' : 'Map');
+                        }} />
+                        <Button variant="outline">
+                            Add
+                        </Button>
+                    </div>
+                    <ContentFilter />
+                </CardFooter>
                 <LandDetails isOpen={isOpen} setIsOpen={setIsOpen} currentLand={currentLand} />
             </Card>
         </CustomProfiler>

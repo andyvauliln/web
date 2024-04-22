@@ -3,7 +3,22 @@
 The codebase from Theo's [T3 App Router Tutorial on YouTube](https://github.com/t3dotgg/t3gallery)
 
 ## TODO
-[*] make private token for map NEXT_PUBLIC_MAPBOX_TOKEN
+### Land UI
+[] Land Filters
+[] Land Footer
+[] Land Details
+[] New Tooltip
+[] Land List
+[] Map View
+[] Feedback
+[] AI Chat, AI Voice
+[] Logo, Icons
+### Land Server
+[] Parse Lands
+[] Land Load 
+
+### Debt
+[] Make Land ServerSide
 
 ## USEFULLL
 

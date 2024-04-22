@@ -11,7 +11,7 @@ export default function ContentTypeSwittcher({ value, onChange }: ContentTypeSwi
 
   return (
     <div className="flex items-center space-x-2" onClick={onChange}>
-      <Switch id={value} onClick={onChange} checked={value === "map"} />
+      <Switch id={value} onClick={onChange} />
       <Label htmlFor={value}>{value}</Label>
     </div>
   )
