@@ -6,7 +6,7 @@
 import { TabsTrigger, TabsList, TabsContent, Tabs } from "~/components/ui/tabs"
 import { CardTitle, CardDescription, CardHeader, CardContent, CardFooter, Card } from "~/components/ui/card"
 import { Button } from "~/components/ui/button"
-import TabsLandContent from "./tabs-land-content"
+import TabsLandContent from "./tabs-property-content"
 import { MapProvider } from 'react-map-gl';
 
 export default function TopTabs() {

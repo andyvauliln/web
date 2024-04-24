@@ -4,6 +4,8 @@ The codebase from Theo's [T3 App Router Tutorial on YouTube](https://github.com/
 
 ## TODO
 ### Land UI
+[] Fix Layot
+[] Check if Notion possible imbed
 [] Land Filters
 [] Land Footer
 [] Land Details
