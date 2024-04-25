@@ -9,6 +9,7 @@ import {
 } from "@radix-ui/react-icons"
 import * as SelectPrimitive from "@radix-ui/react-select"
 
+
 import { cn } from "~/lib/utils"
 
 const Select = SelectPrimitive.Root
@@ -24,14 +25,14 @@ const SelectTrigger = React.forwardRef<
     <SelectPrimitive.Trigger
         ref={ref}
         className={cn(
-            "flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+            "flex h-9 text-green-700 w-full items-center justify-between whitespace-nowrap rounded-md border border-green-700 bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
             className
         )}
         {...props}
     >
         {children}
         <SelectPrimitive.Icon asChild>
-            <CaretSortIcon className="h-4 w-4 opacity-50" />
+            <ChevronDownIcon className="h-4 w-4" />
         </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
 ))
@@ -123,7 +124,7 @@ const SelectItem = React.forwardRef<
     <SelectPrimitive.Item
         ref={ref}
         className={cn(
-            "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+            "relative hover:bg-gray-100 cursor-pointer flex w-full cursor select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
             className
         )}
         {...props}
@@ -150,14 +151,57 @@ const SelectSeparator = React.forwardRef<
 ))
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName
 
+
+
+const SelectSimple = React.forwardRef(
+    ({ children, ...props }, forwardedRef) => {
+        return (
+            <SelectPrimitive.Root {...props}>
+                <SelectPrimitive.Trigger ref={forwardedRef}>
+                    <SelectPrimitive.Value />
+                    <SelectPrimitive.Icon>
+                        <ChevronDownIcon />
+                    </SelectPrimitive.Icon>
+                </SelectPrimitive.Trigger>
+                <SelectPrimitive.Portal>
+                    <SelectPrimitive.Content>
+                        <SelectPrimitive.ScrollUpButton>
+                            <ChevronUpIcon />
+                        </SelectPrimitive.ScrollUpButton>
+                        <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>
+                        <SelectPrimitive.ScrollDownButton>
+                            <ChevronDownIcon />
+                        </SelectPrimitive.ScrollDownButton>
+                    </SelectPrimitive.Content>
+                </SelectPrimitive.Portal>
+            </SelectPrimitive.Root>
+        );
+    }
+);
+
+const SelectItemSimple = React.forwardRef(
+    ({ children, ...props }, forwardedRef) => {
+        return (
+            <SelectPrimitive.Item {...props} ref={forwardedRef}>
+                <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+                <SelectPrimitive.ItemIndicator>
+                    <CheckIcon />
+                </SelectPrimitive.ItemIndicator>
+            </SelectPrimitive.Item>
+        );
+    }
+);
+
 export {
     Select,
+    SelectSimple,
     SelectGroup,
     SelectValue,
     SelectTrigger,
     SelectContent,
     SelectLabel,
     SelectItem,
+    SelectItemSimple,
     SelectSeparator,
     SelectScrollUpButton,
     SelectScrollDownButton,

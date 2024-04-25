@@ -1,8 +1,8 @@
 import { getLands } from '~/server/lands';
 import { NextRequest, NextResponse } from 'next/server';
+//import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 export async function GET(req: NextRequest, res: NextResponse) {
-
 
   try {
     const lands = await getLands();

@@ -1,53 +1,33 @@
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { SimpleUploadButton } from "./simple-upload-button";
 import Image from "next/image";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "~/components/ui/select"
+import { Button } from "~/components/ui/button"
 
 export function TopNav() {
   return (
-    <nav className="flex w-full items-center justify-between border-b p-4 text-xl font-semibold">
-      <div>
+    <header className="flex w-full items-center justify-between border-b p-4 text-xl font-semibold">
+      <div className="flex items-center gap-2">
         <Image src="/maba_bali_2.svg" alt="Mama Bali" width={60} height={60} style={{ marginTop: -20, marginBottom: -20 }} />
+        <div className="flex flex-col">
+          <span className="text-sm text-gray-500">Today Views: 653</span>
+          <span className="text-sm text-gray-500">Today New: 15</span>
+        </div>
       </div>
 
-      <div className="flex flex-row items-center gap-4">
-        <LanguageSwitcher />
+      <nav className="flex flex-row items-center gap-4">
         <SignedOut>
-          <SignInButton />
+          <SignInButton>
+            <Button variant="greenborder">
+              Sign In
+            </Button>
+          </SignInButton>
         </SignedOut>
         <SignedIn>
           <SimpleUploadButton />
           <UserButton />
         </SignedIn>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }
 
-function LanguageSwitcher() {
-  return (
-    <Select>
-      <SelectTrigger className="w-[120px]">
-        <SelectValue placeholder="Language" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectItem value="en">English</SelectItem>
-          <SelectItem value="ind">Indonesian</SelectItem>
-          <SelectItem value="ru">Russian</SelectItem>
-          <SelectItem value="zh">Chinese</SelectItem>
-          <SelectItem value="id">Indian</SelectItem>
-          <SelectItem value="ko">Korean</SelectItem>
-          <SelectItem value="ja">Japanese</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  )
-}

@@ -97,6 +97,19 @@ div[mapboxgl-children] {
   display: none;
 }
 
+.clerk-sign-in-button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clerk-sign-in-button:hover {
+  background-color: #3e8e41;
+}
+
 /* color for #379551 */
 /* 
 .mapboxgl-control-container {

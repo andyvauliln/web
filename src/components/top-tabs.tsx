@@ -27,7 +27,7 @@ export default function TopTabs() {
     <Tabs key="1" className="flex flex-col h-full w-full" defaultValue="properties">
       <TabsList className="grid w-full grid-cols-5 sm:grid-cols-5 md:grid-cols-10 gap-2">
         {tabsArray.map(tab => (
-          <TabsTrigger key={tab.value} value={tab.value}>{tab.title}</TabsTrigger>
+          <TabsTrigger className="" key={tab.value} value={tab.value}>{tab.title}</TabsTrigger>
         ))}
       </TabsList>
       {tabsArray.map(tab => (
