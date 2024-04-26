@@ -1,42 +1,47 @@
 'use client';
 import * as React from 'react';
-import Map, { Source, Layer } from 'react-map-gl';
+import Map, { Source, Layer, GeolocateControl, NavigationControl, ScaleControl } from 'react-map-gl';
 import type { MapLayerMouseEvent } from 'react-map-gl';
 import type { FeatureCollection, Feature, } from 'geojson';
 import type { Land } from '~/server/lands';
 import { Separator } from '~/components/ui/separator';
-//import * as topojson from 'topojson';
-
-//https://github.com/nagix/mini-tokyo-3d/ cool!!!
-// Bali live cameras https://www.webcamtaxi.com/en/indonesia/bali.html#google_vignette
-//https://www.skylinewebcams.com/en/webcam/indonesia/bali.html
-//https://balisatudata.baliprov.go.id/peta-tata-ruang
-//https://balisatudata.baliprov.go.id/peta-cctv
+import { mapSettingsAtom, zoomAtom, MapSettings } from './map-settings';
+import { useAtom } from 'jotai';
+import { useRef } from 'react';
+import type { MapRef } from 'react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 const TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
-type HoverInfo = {
-    feature: Feature;
-    lat: number;
-    lng: number;
-    x: number;
-    y: number;
-}
-
-export default function LandMap({ mapData, onClick, lon = 115.104819, lat = -8.244833, zoom = 15 }: { mapData?: FeatureCollection | null | undefined, onClick: (feature: Feature | null) => void, lat?: number, lon?: number, zoom?: number }) {
+export default function LandMap({ mapData, onClick }: { mapData?: FeatureCollection | null | undefined, onClick: (feature: Feature | null) => void }) {
     const [hoverInfo, setHoverInfo] = React.useState<HoverInfo | null>(null);
-    // const topology = topojson.topology({ data: mapData || { type: "FeatureCollection", features: [] } });
-
+    const [settings, setSettings] = useAtom<MapSettings>(mapSettingsAtom)
+    //const [zoom, setZoom] = useAtom(zoomAtom)
+    //console.log(zoom, "zoom from useAtom")
+    //console.log(localStorage ? localStorage.getItem('zoom') : "No", "zoom from local storage")
+    // console.log(settings, "settings")
+    const mapRef = useRef<MapRef>(null);
 
     const onHover = React.useCallback((event: any) => {
         const {
             features,
             point: { x, y }
         } = event;
-        console.log("event: ", event)
+        // console.log("event: ", event)
         const hoveredFeature = features && features[0];
+        setSettings(prevSettings => ({
+            ...prevSettings,
+            lat: event.lngLat.lat,
+            lng: event.lngLat.lng,
+            zoom: event.target.getZoom(),
+            bearing: event.target.getBearing(),
+            pitch: event.target.getPitch()
+        }));
+        // const zoomNew = event.target.getZoom()
+        // setZoom(event.target.getZoom())
+        // console.log("zoom set to: ", zoomNew)
 
         setHoverInfo(hoveredFeature && { feature: hoveredFeature, x, y, id: hoveredFeature.id, lat: event.lngLat.lat, lng: event.lngLat.lng });
-    }, []);
+    }, [setSettings]);
 
     const onMapClick = React.useCallback((event: MapLayerMouseEvent) => {
         const {
@@ -52,172 +57,204 @@ export default function LandMap({ mapData, onClick, lon = 115.104819, lat = -8.2
         }
     }, []);
     return (
-        <>
-            <Map
-                reuseMaps
-                initialViewState={{
-                    latitude: lat,
-                    longitude: lon,
-                    zoom: zoom,
-                    bearing: 320,
-                    pitch: 30
-                }}
-                onMouseLeave={() => setHoverInfo(null)}
-                optimizeForTerrain={true}
-                onMouseMove={onHover}
-                onClick={onMapClick}
-                maxPitch={85}
-                mapStyle="mapbox://styles/mapbox/satellite-v9"
-                mapboxAccessToken={TOKEN}
-                interactiveLayerIds={['lands']}
-                terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
-                style={{ width: '100%', height: '100%', margin: 0, padding: 0 }}
-                attributionControl={false}
-            >
-                {mapData && (
-                    <>
-                        <Source data={mapData} buffer={512} id="lands" type="geojson">
 
-                            <Layer
-                                id="lands"
-                                type="fill"
-                                source="lands"
-                                // filter={['==', ['id'], hoverInfo?.feature?.id]}
-                                paint={{
-                                    'fill-color': '#fff',
-                                    'fill-opacity': 0,
-                                    'fill-outline-color': '#fff'
-                                }}
-                                layout={{
-                                    'visibility': 'visible'
-                                }}
-                            />
-                            <Layer
-                                id="landData-line"
-                                type="line"
-                                paint={{
-                                    'line-color': '#fff',
-                                    'line-opacity': 0.5,
-                                    'line-width': 1
-                                }}
-                            />
-
-                        </Source>
-
-                        <Source
-                            id="mapbox-dem"
-                            type="raster-dem"
-                            url="mapbox://mapbox.mapbox-terrain-dem-v1"
-                            tileSize={512}
-                        // maxzoom={14}
-                        />
-                        <Source
-                            id="mapbox-streets"
-                            type="vector"
-                            url="mapbox://mapbox.mapbox-streets-v8,mapbox.road-detail-v1"
-                        >
-                            <Layer
-                                id="road"
-                                source-layer="road"
-                                type="line"
-                                // filter={{['in', 'class', 'motorway','trunk', 'primary', 'secondary', 'tertiary', 'street', 'street_limited', 'pedestrian', 'track', 'service', 'ferry', 'path',]}}
-                                //filter={['in', 'class', 'construction']}
-                                // filter={['in', 'class', 'trunk', 'tertiary', 'street', 'street_limited', 'track'}
-                                // filter={['in', 'class',  'service', 'ferry', 'path', 'major_rail'}
-                                paint={{
-                                    'line-color': '#ff0000',
-                                    'line-width': 5
-                                }}
-                            />
-                            {/* <Layer
-                                id="Waterway"
-                                source="mapbox-streets"
-                                source-layer="waterway"
-                                type="line"
-                                paint={{
-                                    'line-color': '#00008b', // darkblue
-                                    'line-width': 5
-                                }}
-                                layout={{
-                                    'visibility': 'visible',
-                                }}
-                            /> */}
-                            <Layer
-                                id="Admin"
-                                source="mapbox-streets"
-                                source-layer="admin"
-                                type="line"
-                                paint={{
-                                    'line-color': '#800080', // purple
-                                    'line-width': 5
-                                }}
-                                layout={{
-                                    'visibility': 'visible',
-                                }}
-                            />
-                        </Source>
-
-                        {/* <Source
-                            id="buildings"
-                            type="vector"
-                            url="mapbox://mapbox.mapbox-streets-v8"
-                        >
-                            <Layer
-                                id="building"
-                                type="fill-extrusion"
-                                source="buildings"
-                                source-layer="building"
-                                filter={["==", ["get", "extrude"], "true"]}
-                                paint={{
-                                    "fill-extrusion-color": [
-                                        "interpolate",
-                                        ["linear"],
-                                        ["get", "height"],
-                                        0, "rgb(255, 255, 255)",
-                                        100, "rgba(112, 189, 219, 0.8)",
-                                        200, "rgba(45, 138, 174, 0.8)",
-                                        300, "rgba(170, 219, 238, 0.8)",
-                                        400, "rgba(118, 187, 214, 0.05)",
-                                        430, "rgba(101, 198, 236, 0.98)",
-                                        500, "rgb(255, 255, 255)",
-                                        600, "rgba(150, 223, 237, 0.8)",
-                                        700, "rgba(191, 217, 227, 0.8)",
-                                        900, "rgba(191, 217, 227, 0.8)",
-                                        1000, "rgba(79, 163, 196, 0.8)",
-                                        1200, "rgba(36, 104, 143, 0.8)",
-                                        1300, "rgba(166, 217, 237, 0.8)",
-                                        1400, "rgba(177, 194, 201, 0.8)",
-                                        1500, "rgba(255, 255, 255, 0.8)"
-                                    ],
-                                    "fill-extrusion-height": ["get", "height"],
-                                    "fill-extrusion-base": ["get", "min_height"],
-                                    "fill-extrusion-vertical-gradient": false,
-                                    "fill-extrusion-opacity": 0.75,
-                                }}
-                            />
-                        </Source> */}
-
-                        {hoverInfo?.feature && (
-                            <Source id="hoveredFeature" type="geojson" data={{ type: "FeatureCollection", features: [hoverInfo.feature] }}>
-                                <Layer
-                                    id="hoveredFeature"
-                                    type="fill"
-                                    paint={{
-                                        'fill-color': '#fff',
-                                        'fill-opacity': 0.1,
-                                        'fill-outline-color': '#fff',
-                                    }}
-                                />
-                            </Source>
-                        )}
-                        {hoverInfo && (
-                            <Popover x={hoverInfo.x} y={hoverInfo.y} data={hoverInfo.feature.properties} />
-                        )}
-                    </>
-                )}
-            </Map>
-        </>
+        <Map
+            ref={mapRef}
+            reuseMaps
+            initialViewState={{
+                latitude: settings.lat,
+                longitude: settings.lng,
+                zoom: settings.zoom,
+                bearing: settings.bearing,
+                pitch: settings.pitch,
+            }}
+            // viewState={{
+            //     latitude: settings.lat,
+            //     longitude: settings.lng,
+            //     zoom: settings.zoom,
+            //     bearing: settings.bearing,
+            //     pitch: settings.pitch,
+            //     padding: { top: 0, bottom: 0, left: 0, right: 0 },
+            //     width: 100,
+            //     height: 100
+            // }}
+            onMouseLeave={() => setHoverInfo(null)}
+            onLoad={() => {
+                console.log("test")
+            }}
+            optimizeForTerrain={true}
+            onMouseMove={onHover}
+            onClick={onMapClick}
+            maxPitch={85}
+            mapStyle="mapbox://styles/mapbox/satellite-v9?optimize=true"
+            mapboxAccessToken={TOKEN}
+            interactiveLayerIds={['lands']}
+            terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
+            style={{ width: '100%', height: '100%', margin: 0, padding: 0 }}
+            attributionControl={false}
+        >
+            {/* <GeolocateControl position='top-left' />
+            <NavigationControl position='top-right' />
+            <ScaleControl position='bottom-left' /> */}
+            <Source
+                id="mapbox-dem"
+                type="raster-dem"
+                url="mapbox://mapbox.mapbox-terrain-dem-v1?optimize=true"
+                tileSize={512}
+            // maxzoom={14}
+            />
+            {settings.layers.includes("lands") && mapData && <MapDataComponent mapData={mapData} hoverInfo={hoverInfo} />}
+            <MapLayers settings={settings} />
+            {hoverInfo && <HoveredFeatureInfo hoverInfo={hoverInfo} />}
+        </Map>
     );
+}
+
+
+function MapLayers({ settings }: { settings: MapSettings }) {
+    return (
+        <Source
+            id="mapbox-streets"
+            type="vector"
+            url="mapbox://mapbox.mapbox-streets-v8?optimize=true"
+        >
+            {settings.layers.includes("main_roads") && (
+                <Layer
+                    id="road"
+                    source-layer="road"
+                    type="line"
+                    // filter={{['in', 'class', 'motorway','trunk', 'primary', 'secondary', 'tertiary', 'street', 'street_limited', 'pedestrian', 'track', 'service', 'ferry', 'path',]}}
+                    //filter={['in', 'class', 'construction']}
+                    // filter={['in', 'class', 'trunk', 'tertiary', 'street', 'street_limited', 'track']}
+                    // filter={['in', 'class', 'service', 'ferry', 'path', 'major_rail']}
+                    filter={['in', 'class', 'trunk']}
+                    paint={{
+                        'line-color': '#ff0000',
+                        'line-width': 5
+                    }}
+                />)}
+
+            {settings.layers.includes("waterway") && (
+                <Layer
+                    id="Waterway"
+                    source="mapbox-streets"
+                    source-layer="waterway"
+                    type="line"
+                    paint={{
+                        'line-color': '#00008b', // darkblue
+                        'line-width': 5
+                    }}
+                    layout={{
+                        'visibility': 'visible',
+                    }}
+                />
+            )}
+
+            {settings.layers.includes("admin") && (
+                <Layer
+                    id="Admin"
+                    source="mapbox-streets"
+                    source-layer="admin"
+                    type="line"
+                    paint={{
+                        'line-color': '#800080', // purple
+                        'line-width': 5
+                    }}
+                    layout={{
+                        'visibility': 'visible',
+                    }}
+                />
+            )}
+
+            {settings.layers.includes("buildings") && (
+                <Layer
+                    id="building"
+                    type="fill-extrusion"
+                    source="buildings"
+                    source-layer="building"
+                    filter={["==", ["get", "extrude"], "true"]}
+                    paint={{
+                        "fill-extrusion-color": [
+                            "interpolate",
+                            ["linear"],
+                            ["get", "height"],
+                            0,
+                            "rgb(255, 255, 255)",
+                            100,
+                            "rgba(112, 189, 219, 0.8)",
+                            200,
+                            "rgba(45, 138, 174, 0.8)",
+                            300,
+                            "rgba(170, 219, 238, 0.8)",
+                            400,
+                            "rgba(118, 187, 214, 0.05)",
+                            430,
+                            "rgba(101, 198, 236, 0.98)",
+                            500,
+                            "rgb(255, 255, 255)",
+                            600,
+                            "rgba(150, 223, 237, 0.8)",
+                            700,
+                            "rgba(191, 217, 227, 0.8)",
+                            900,
+                            "rgba(191, 217, 227, 0.8)",
+                            1000,
+                            "rgba(79, 163, 196, 0.8)",
+                            1200,
+                            "rgba(36, 104, 143, 0.8)",
+                            1300,
+                            "rgba(166, 217, 237, 0.8)",
+                            1400,
+                            "rgba(177, 194, 201, 0.8)",
+                            1500,
+                            "rgba(255, 255, 255, 0.8)",
+                        ],
+                        "fill-extrusion-height": ["get", "height"],
+                        "fill-extrusion-base": ["get", "min_height"],
+                        "fill-extrusion-vertical-gradient": false,
+                        "fill-extrusion-opacity": 0.75,
+                    }}
+                />
+            )}
+        </Source>
+    )
+}
+
+function MapDataComponent({ mapData, hoverInfo }: { mapData: FeatureCollection, hoverInfo: HoverInfo | null }) {
+    return (
+        <>
+            <Source data={mapData} buffer={512} id="lands" type="geojson">
+
+                <Layer
+                    id="lands"
+                    type="fill"
+                    source="lands"
+                    // filter={['==', ['id'], hoverInfo?.feature?.id]}
+                    paint={{
+                        'fill-color': '#fff',
+                        'fill-opacity': 0,
+                        'fill-outline-color': '#fff'
+                    }}
+                    layout={{
+                        'visibility': 'visible'
+                    }}
+                />
+                <Layer
+                    id="landData-line"
+                    type="line"
+                    paint={{
+                        'line-color': '#fff',
+                        'line-opacity': 0.5,
+                        'line-width': 1
+                    }}
+                />
+
+            </Source>
+
+
+        </>
+
+    )
 }
 
 function Popover({ x, y, data }: { x: number, y: number, data: any }) {
@@ -227,7 +264,6 @@ function Popover({ x, y, data }: { x: number, y: number, data: any }) {
             <div className='flex gap-2'>
                 <span className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground shadow'>Rent</span>
                 <span className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground '>Buy</span>
-                {/* <span className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2'>Sold</span> */}
             </div>
         </div>
         <Separator className='my-2' orientation='horizontal' />
@@ -266,6 +302,49 @@ function Popover({ x, y, data }: { x: number, y: number, data: any }) {
     </div>
 }
 
+
+type HoverInfo = {
+    feature: Feature;
+    lat: number;
+    lng: number;
+    x: number;
+    y: number;
+}
+
+function HoveredFeatureInfo({ hoverInfo }: { hoverInfo: HoverInfo }) {
+    return (
+        <>
+            {hoverInfo?.feature && (
+                <Source id="hoveredFeature" type="geojson" data={{ type: "FeatureCollection", features: [hoverInfo.feature] }}>
+                    <Layer
+                        id="hoveredFeature"
+                        type="fill"
+                        paint={{
+                            'fill-color': '#fff',
+                            'fill-opacity': 0.1,
+                            'fill-outline-color': '#fff',
+                        }}
+                    />
+                </Source>
+            )}
+            {hoverInfo && (
+                <Popover x={hoverInfo.x} y={hoverInfo.y} data={hoverInfo.feature.properties} />
+            )}
+        </>
+    )
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // 'motorway': These are high-speed, grade-separated highways. They are typically used by cars, trucks, and other motor vehicles. Examples include interstates in the U.S., autobahns in Germany, and motorways in the U.K.
 // 'trunk': These are important roads that are not motorways. They are often major routes within a country and can be used by all types of vehicles. Examples include U.S. highways that are not interstates.
 // 'primary': These are major highways linking large towns. They can be used by all types of vehicles. Examples include state highways in the U.S. and A roads in the U.K.
@@ -283,3 +362,13 @@ function Popover({ x, y, data }: { x: number, y: number, data: any }) {
 // const bbox = [-74.04728500751165, 40.68291694544512, -73.90665099539478, 40.87903804730722]; // Example bbox for New York
 //     const viewport = new WebMercatorViewport(this.state.viewport);
 //     const {longitude, latitude, zoom} = viewport.fitBounds([[bbox[0], bbox[1]], [bbox[2], bbox[3]]], {padding: 20});
+
+
+
+//import * as topojson from 'topojson';
+
+//https://github.com/nagix/mini-tokyo-3d/ cool!!!
+// Bali live cameras https://www.webcamtaxi.com/en/indonesia/bali.html#google_vignette
+//https://www.skylinewebcams.com/en/webcam/indonesia/bali.html
+//https://balisatudata.baliprov.go.id/peta-tata-ruang
+//https://balisatudata.baliprov.go.id/peta-cctv

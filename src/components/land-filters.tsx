@@ -13,7 +13,7 @@ import {
 const landFilters = atomWithStorage<string[]>('land_filters', ["all"])
 
 const filterOptions = [
-  { title: "All", value: "all" },
+  { title: "All Lands", value: "all" },
   { title: "Buy", value: "buy" },
   { title: "Rent", value: "rent" },
   // { title: "Sold", value: "sold" },

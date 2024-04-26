@@ -48,7 +48,7 @@ export default function RootLayout({
 
             <TopNav />
             <main className="overflow-y-scroll flex flex-grow w-full">{children}</main>
-
+            <Footer />
             {modal}
             <WebVitals />
             <div id="modal-root" />
@@ -57,5 +57,11 @@ export default function RootLayout({
         </html>
       </CSPostHogProvider>
     </ClerkProvider>
+  );
+}
+function Footer() {
+  return (
+    <footer id="footer-content" className="flex items-center w-full p-4 h-[4rem]">
+    </footer>
   );
 }

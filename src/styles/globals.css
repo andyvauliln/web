@@ -94,7 +94,7 @@ dialog:modal {
 
 
 div[mapboxgl-children] {
-  display: none;
+  height: 0 !important;
 }
 
 .clerk-sign-in-button {

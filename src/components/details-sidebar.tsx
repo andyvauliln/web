@@ -1,47 +1,52 @@
 'use client'
-import { Button } from "~/components/ui/button"
-import { SheetTrigger, SheetTitle, SheetDescription, SheetHeader, SheetClose, SheetFooter, SheetContent, Sheet } from "~/components/ui/sheet"
-import { Label } from "~/components/ui/label"
-import { Input } from "~/components/ui/input"
-import { useState } from 'react'
-import { Feature } from 'geojson'
-//import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { SheetContent, Sheet } from "~/components/ui/sheet"
+import { atomWithStorage } from 'jotai/utils'
+import { useAtom } from 'jotai'
+import LandFilters from "~/components/land-filters"
+import MapSettings from "~/components/map-settings"
 
-type LandDetailsProps = {
-  isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
-  currentLand: Feature | null | undefined;
-};
+export const detailsSidebarAtom = atomWithStorage<any>('details_sidebar_data', null)
 
-export default function LandDetails({ isOpen, setIsOpen, currentLand }: LandDetailsProps) {
-  const [name, setName] = useState('Pedro Duarte')
-  const [username, setUsername] = useState('@peduarte')
+export default function DetailsSidebar() {
+  const [detailsSidebarData, setDetailsSidebarData] = useAtom(detailsSidebarAtom)
 
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>Land Profile</SheetTitle>
-
-        </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <SheetDescription>Make changes to your profile here. Click save when you're done.</SheetDescription>
-            <Label className="text-right" htmlFor="name">
-              Name
-            </Label>
-            <Input className="col-span-3" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-          </div>
-        </div>
-        <SheetFooter>
-          {/* <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
-          </SheetClose> */}
-        </SheetFooter>
+    <Sheet open={detailsSidebarData?.isOpen} onOpenChange={e => setDetailsSidebarData({ ...detailsSidebarData, isOpen: !detailsSidebarData?.isOpen })}>
+      <SheetContent side={detailsSidebarData?.side}>
+        {(() => {
+          switch (detailsSidebarData?.content) {
+            case 'land-filter':
+              return <LandFilters />;
+            case 'map-settings':
+              return <MapSettings />;
+            default:
+              return <div>Sorry No Content Found.</div>;
+          }
+        })()}
       </SheetContent>
     </Sheet>
   )
 }
+
+
+{/* <SheetHeader>
+<SheetTitle>Land Profile</SheetTitle>
+
+</SheetHeader>
+<div className="grid gap-4 py-4">
+<div className="grid grid-cols-4 items-center gap-4">
+  <SheetDescription>Make changes to your profile here. Click save when you're done.</SheetDescription>
+  <Label className="text-right" htmlFor="name">
+    Name
+  </Label>
+  <Input className="col-span-3" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+</div>
+</div>
+<SheetFooter> */}
+{/* <SheetClose asChild>
+  <Button type="submit">Save changes</Button>
+</SheetClose> 
+
 // Actions
 // If currentLand land owner id is equal to user id then show edit button else hide
 // Button to request Ownership
@@ -126,8 +131,5 @@ export default function LandDetails({ isOpen, setIsOpen, currentLand }: LandDeta
 // Owner Stores
 
 
-
-
-
-
+*/}
 
