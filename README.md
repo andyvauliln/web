@@ -3,6 +3,13 @@
 The codebase from Theo's [T3 App Router Tutorial on YouTube](https://github.com/t3dotgg/t3gallery)
 
 ## TODO
+Today:
+[] Land Filters
+[] Land Details
+[] Create Edit Land
+[] Layer Tooltip
+[] Land List
+
 ### Land UI
 [] Fix Layot
 [] Check if Notion possible imbed

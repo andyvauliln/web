@@ -12,7 +12,7 @@ export default function DetailsSidebar() {
 
   return (
     <Sheet open={detailsSidebarData?.isOpen} onOpenChange={e => setDetailsSidebarData({ ...detailsSidebarData, isOpen: !detailsSidebarData?.isOpen })}>
-      <SheetContent className={`${detailsSidebarData?.size || 'h-full'}`} side={detailsSidebarData?.side}>
+      <SheetContent className={`bg-transparent border-none w-auto ${detailsSidebarData?.size || 'h-full'}`} side={detailsSidebarData?.side}>
         {(() => {
           switch (detailsSidebarData?.content) {
             case 'land-filter':

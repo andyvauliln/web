@@ -1,33 +1,39 @@
 import React from 'react';
 import { atomWithStorage } from 'jotai/utils'
 import { useAtom } from 'jotai'
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "~/components/ui/select"
+import { SheetTitle } from "~/components/ui/sheet"
 
 const landFilters = atomWithStorage<string[]>('land_filters', ["all"])
 
 const filterOptions = [
-  { title: "All Lands", value: "all" },
-  { title: "Buy", value: "buy" },
-  { title: "Rent", value: "rent" },
-  // { title: "Sold", value: "sold" },
-  { title: "Agent", value: "agent" },
-  { title: "Owner", value: "owner" },
-  { title: "Due Deligence", value: "due_deligence" },
-  { title: "Photo", value: "photo" },
-  { title: "Video", value: "video" },
-  { title: "View", value: "view" },
-  { title: "Ocean", value: "near_ocean" },
-  { title: "River", value: "near_river" },
-  { title: "Road", value: "road_access" },
-  { title: "Electricity", value: "electricity" },
-  { title: "Water", value: "water" },
+  { title: "All Lands", value: "all", className: "border-b border-gray-500 pb-2" },
+  { title: "Lends For Buy", value: "buy", className: "" },
+  { title: "Lends For Rent", value: "rent", className: "border-b border-gray-500 pb-2" },
+  { title: "Yellow Zone", value: "yellow_zone", className: "text-yellow-500" },
+  { title: "Green Zone", value: "green_zone", className: "text-green-500" },
+  { title: "Red Zone", value: "red_zone", className: "text-red-500" },
+  { title: "Pink Zone", value: "pink_zone", className: "text-pink-500" },
+  { title: "Orange Zone", value: "orange_zone", className: "text-orange-500" },
+  { title: "Special Economic Zone", value: "special_zone", className: "border-b border-gray-500 pb-2" },
+  { title: "Low Price", value: "price_low" },
+  { title: "Market Price", value: "price_medium" },
+  { title: "High Price", value: "price_high", className: "border-b border-gray-500 pb-2" },
+  { title: "Lands From Agent", value: "agent" },
+  { title: "Lands From Owner", value: "owner", className: "border-b border-gray-500 pb-2" },
+  { title: "With Due Deligence", value: "due_deligence" },
+  { title: "With Photo", value: "photo" },
+  { title: "With Video", value: "video", className: "border-b border-gray-500 pb-2" },
+  { title: "With Mountain View", value: "mountain_view" },
+  { title: "With Ocean View", value: "ocean_view" },
+  { title: "With Rice Field View", value: "rice_field_view" },
+  { title: "With Valley View", value: "vallay_view" },
+  { title: "Near Ocean", value: "near_ocean" },
+  { title: "Near River", value: "near_river", className: "border-b border-gray-500 pb-2" },
+  { title: "With Road Access", value: "road_access" },
+  { title: "With Electricity", value: "electricity" },
+  { title: "With Water", value: "water", className: "border-b border-gray-500 pb-2" },
+  { title: "Sold Lands", value: "sold" },
+
 ];
 
 
@@ -47,58 +53,20 @@ export default function LandFilters() {
   };
 
   return (
-    <div className="inline-flex flex-wrap py-2 items-center justify-between w-full px-2 ">
-      <div className="shadow-sm shadow-gray-500  ">
+    <>
+      <div className="flex flex-col py-2 w-full h-full px-2 overflow-auto">
         {filterOptions.map(option => (
-          <label key={option.value} className={`cursor-pointer inline-flex items-center px-4 py-2 text-sm font-medium ${checkedValues.includes(option.value) ? 'text-blue-700 bg-gray-100' : 'text-gray-900 bg-white'} border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white`}>
-            <input type="checkbox" className="hidden" value={option.value} onChange={() => handleChange(option.value)} checked={checkedValues.includes(option.value)} />
-            <span className="ml-2">{option.title}</span>
-          </label>
+          <div key={option.value} className={"flex items-center me-4 my-1 cursor-pointer " + option.className}>
+            <div className="checkbox-wrapper-8">
+              <input className="tgl tgl-skewed" id={option.value} onChange={() => handleChange(option.value)} type="checkbox" checked={checkedValues.includes(option.value)} />
+              <label className="tgl-btn" data-tg-off="OFF" data-tg-on="ON" htmlFor={option.value}></label>
+            </div>
+            <label htmlFor={option.value} className="cursor-pointer hover:text-white font-bold ms-3 text-base text-gray-400" onChange={() => handleChange(option.value)}>{option.title}</label>
+          </div>
         ))}
       </div>
-      <div className="flex gap-2">
-        <LandZoneFilter />
-        <LandPriceFilter />
-      </div>
-    </div>
+    </>
   )
 }
 
 
-
-
-function LandZoneFilter() {
-  return (
-    <Select>
-      <SelectTrigger className="w-[120px]">
-        <SelectValue placeholder="Land Zone" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectItem value="yellow">Yellow</SelectItem>
-          <SelectItem value="green">Green</SelectItem>
-          <SelectItem value="red">Red</SelectItem>
-          <SelectItem value="pink">Pink</SelectItem>
-          <SelectItem value="purple">Orange</SelectItem>
-          <SelectItem value="special">Special</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  )
-}
-function LandPriceFilter() {
-  return (
-    <Select>
-      <SelectTrigger className="w-[100px]">
-        <SelectValue placeholder="Price" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectItem value="low">Low</SelectItem>
-          <SelectItem value="medium">Medium</SelectItem>
-          <SelectItem value="high">High</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  )
-}
