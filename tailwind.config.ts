@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      variants: {
+        extend: {
+          backgroundColor: ['checked'],
+        },
+      },
       colors: {
         "custom-green": "#379551",
         border: "hsl(var(--border))",

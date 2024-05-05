@@ -3,7 +3,7 @@ import ContentTypeSwittcher from "~/components/view-type-swittcher"
 import { CardHeader, CardContent, CardFooter, Card } from "~/components/ui/card"
 import DetailsSidebar, { detailsSidebarAtom } from "~/components/details-sidebar";
 import LandMap from "./land-map"
-import DeckMap from "./deck-map"
+import DeckMap from "../../archive/deck-map"
 import LandList from "./land-list"
 import { atomWithStorage } from 'jotai/utils'
 import { useAtom } from 'jotai'

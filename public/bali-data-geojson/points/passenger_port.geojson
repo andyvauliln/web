@@ -1,0 +1,81 @@
+{
+    "type": "FeatureCollection",
+    "name": "passenger_port",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "description": "Port for transportaion People",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Penumpang Tipe A",
+                "REMARK": "Terminal Mengwi"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.168277372062448,
+                        -8.558357984395002,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Penumpang Tipe B",
+                "REMARK": "Terminal Gilimanuk (Status masih tipe C, dapat dikembangkan setelah melalui kajian)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.437029418027464,
+                        -8.163939376072506,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Penumpang Tipe B",
+                "REMARK": "Terminal Kuta (Status masih tipe C, dapat dikembangkan setelah melalui kajian)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.179796279000016,
+                        -8.713764455999979,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Penumpang Tipe B",
+                "REMARK": "Terminal Padangbai (Status masih tipe C, dapat dikembangkan setelah melalui kajian)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.494616960377471,
+                        -8.525825168977519,
+                        0.0
+                    ]
+                ]
+            }
+        }
+    ]
+}

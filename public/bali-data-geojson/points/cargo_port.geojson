@@ -1,0 +1,302 @@
+{
+    "type": "FeatureCollection",
+    "name": "cargo_port",
+    "description": " designated area within a port or transportation hub specifically designed for the handling, storage, and distribution of cargo.",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Barang",
+                "REMARK": "Terminal Barang Benoa"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.207595561599987,
+                        -8.7417161201775,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Barang",
+                "REMARK": "Terminal Barang Celukan Bawang"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.831158109970033,
+                        -8.189074005222494,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Barang",
+                "REMARK": "Terminal Barang Gilimanuk"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.438402844182519,
+                        -8.181082776067512,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Barang",
+                "REMARK": "Terminal Barang Tabanan"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.134818734297482,
+                        -8.500829888212479,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Barang",
+                "REMARK": "Terminal Barang Yeh Malet"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.480833333332498,
+                        -8.549816666667482,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Barang",
+                "REMARK": "Terminal Kargo Bandar Udara I Gusti Ngurah Rai"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.173111111109961,
+                        -8.74428611111,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Khusus",
+                "REMARK": "Terminal Khusus Candikusuma"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.50659798898505,
+                        -8.298191320884996,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Khusus",
+                "REMARK": "Terminal Khusus Celukan Bawang Penyediaan Tenaga Listrik (PT. General Energy Bali)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.854464275839973,
+                        -8.195243453287503,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Khusus",
+                "REMARK": "Terminal Khusus Dukuh, Pertambangan dan Batuan (PT. Pasir Mandiri)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.579827383370002,
+                        -8.254915887294999,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Khusus",
+                "REMARK": "Terminal Khusus Lembongan, Pariwisata (PT. Bali Cruises Nusantara)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.439393746117503,
+                        -8.676177245727501,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Khusus",
+                "REMARK": "Terminal Khusus Manggis\/Ulakan, Niaga Migas (PT. Pertamina (Persero) Bahan Bakar Minyak dan Gas)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.508625616510017,
+                        -8.512294633132512,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Khusus",
+                "REMARK": "Terminal Khusus Melaya, Penyediaan Tenaga Listrik (PT. Indonesia Power Unit Pembangkit dan Jasa Pembangkitan)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.431750813622443,
+                        -8.180392150124987,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Khusus",
+                "REMARK": "Terminal Khusus Pariwisata (PT. Bali Turtle Island Development)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.241544723824973,
+                        -8.730893638400005,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Khusus",
+                "REMARK": "Terminal Khusus Pariwisata (PT. Submarine Safaris)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.484112622635053,
+                        -8.681706122050002,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Khusus",
+                "REMARK": "Terminal Khusus Pariwisata (PT.Gde Kadek Brothers Layar Antarnusa)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.438114168792481,
+                        -8.678139626702489,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Khusus",
+                "REMARK": "Terminal Khusus Pemaron, Penyediaan Tenaga Listrik (PT. Indonesia Power)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.055954469402536,
+                        -8.129401926767514,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Terminal Khusus",
+                "REMARK": "Terminal Khusus Tianyar, Pertambangan dan Batuan (PT. Pasir Toya Anyar Kubu)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.512881775082519,
+                        -8.206279716647487,
+                        0.0
+                    ]
+                ]
+            }
+        }
+    ]
+}

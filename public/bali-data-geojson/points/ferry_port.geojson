@@ -1,0 +1,115 @@
+{
+    "type": "FeatureCollection",
+    "name": "ferry_port",
+    "description": "It refers to a port facility where ferries dock to load and unload passengers and vehicles for transportation across bodies of water, such as rivers, lakes, or seas. These ferry ports are crucial transportation hubs, especially in archipelagic countries like Indonesia, where ferry services provide vital links between islands or across waterways where bridges are impractical or nonexistent",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Penyeberangan",
+                "REMARK": "Pelabuhan Penyeberangan Bias Munjul\/Ceningan (Kelas III)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.460026753752459,
+                        -8.688362770127526,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Penyeberangan",
+                "REMARK": "Pelabuhan Penyeberangan Gilimanuk (Kelas I)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.437043060707538,
+                        -8.161514216,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Penyeberangan",
+                "REMARK": "Pelabuhan Penyeberangan Klungkung (Kelas I)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.433891987049947,
+                        -8.573392306535027,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Penyeberangan",
+                "REMARK": "Pelabuhan Penyeberangan Nusa Penida (Kelas III)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.552764764669973,
+                        -8.672225064587508,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Penyeberangan",
+                "REMARK": "Pelabuhan Penyeberangan Padangbai (Kelas I)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.509407751434992,
+                        -8.534043307922502,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Penyeberangan",
+                "REMARK": "Pelabuhan Sangsit (Kelas II)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.131414699967536,
+                        -8.078188292629989,
+                        0.0
+                    ]
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "type": "FeatureCollection",
+    "name": "fish_desribution_port",
+    "description": "Ports that specialized facilities dedicated to the handling, processing, and distribution of fishery products in Indonesia.",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Perikanan Nusantara",
+                "REMARK": "PPN Pengambengan Kelas B"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.574500047417473,
+                        -8.386553355165006,
+                        0.0
+                    ]
+                ]
+            }
+        }
+    ]
+}

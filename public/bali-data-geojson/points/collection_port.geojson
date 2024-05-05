@@ -1,0 +1,47 @@
+{
+    "type": "FeatureCollection",
+    "name": "collection_port",
+    "description": " This type of port is typically used for gathering goods or cargo from various sources or regions before they are further distributed or shipped to their final destinations. Collection ports play a crucial role in the logistics and supply chain industry, serving as hubs for consolidating shipments, conducting quality control checks, and coordinating transportation activities. They may handle various types of cargo, including bulk commodities, containerized goods, and perishable items, depending on their specialization and the needs of the region they serve.",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpul",
+                "REMARK": "Pelabuhan Celukan Bawang (Pengumpul)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.832683956047504,
+                        -8.188304443820016,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpul",
+                "REMARK": "Pelabuhan Labuhan Amuk\/Tanah Ampo (Pengumpul)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.51764496136002,
+                        -8.506489625472511,
+                        0.0
+                    ]
+                ]
+            }
+        }
+    ]
+}

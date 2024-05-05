@@ -1,0 +1,539 @@
+{
+    "type": "FeatureCollection",
+    "name": "energi_pt",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Amed, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.610665008774959,
+                        -8.330409946799989,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Amlapura, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.596665435179943,
+                        -8.453596563402527,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Bajera, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.007671528930018,
+                        -8.525610571054983,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Bandar Udara Bali Baru, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.48332305712745,
+                        -8.17355311750498,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Bandara I Gusti Ngurah Rai, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.165200082829983,
+                        -8.740639654437473,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Candikusuma, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.527804178419956,
+                        -8.330392946280028,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Celukan Bawang, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.837515032975034,
+                        -8.206950195072523,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Gilimanuk, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.435934739467484,
+                        -8.170205658180009,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Kawasan Pusat Kebudayaan Bali, di luar kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.427983691615054,
+                        -8.558474450184974,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Kintamani, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.240799000149991,
+                        -8.223302701732507,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Kubutambahan, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.223941362577534,
+                        -8.092634791837497,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Kuta Utara, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.17091584825755,
+                        -8.637258045452484,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Kuta, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.180585374507473,
+                        -8.71881346265252,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Lovina, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.024767576059958,
+                        -8.166252176717478,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Mangupura, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.171513170060052,
+                        -8.594127006229996,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Mengwi, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.168095895739953,
+                        -8.560227396724997,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Negara, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.59504648413747,
+                        -8.368759315417492,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Nitimandala, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.225317449322461,
+                        -8.669752402367521,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Nusa Dua, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.223459974155048,
+                        -8.790068810647483,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Padangbai, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.494793898409966,
+                        -8.526189215832517,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Pekutatan, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.819395717260022,
+                        -8.413060204477517,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Pelabuhan Benoa, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.220826062962487,
+                        -8.714600759307473,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Pemuteran, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.620586729752517,
+                        -8.149813884572495,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Sanur, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.259635236627446,
+                        -8.670766249280007,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Seminyak, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.179153296009986,
+                        -8.69883626346251,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Seririt, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.937360546187506,
+                        -8.200558340404996,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Singaraja, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.098237492004955,
+                        -8.132360141840024,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Tabanan, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.105096617092499,
+                        -8.551938332657528,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Teuku Umar Denpasar, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.187973363799983,
+                        -8.680277015992488,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Tulamben, di luar Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.501188925670021,
+                        -8.206811102594997,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Stasiun Kereta Api",
+                "REMARK": "Stasiun Ubud\/Sukawati, di dalam Kawasan Sarbagita (Indikatif)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.239504700570023,
+                        -8.542616847894976,
+                        0.0
+                    ]
+                ]
+            }
+        }
+    ]
+}

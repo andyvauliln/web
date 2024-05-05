@@ -1,0 +1,472 @@
+{
+    "type": "FeatureCollection",
+    "name": "feeder_port",
+    "description": "A feeder port is a smaller port that serves as a point of connection or distribution for cargo between larger ports and their hinterlands. These ports typically handle smaller vessels that shuttle goods between the main port and smaller ports along a coastline or river system. Feeder ports play a crucial role in the transportation and distribution of goods, especially in regions where large ports may not be accessible to smaller vessels or where there is a need to distribute cargo to multiple destinations efficiently.",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Banyu Wedang (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.569222693594952,
+                        -8.137750676462474,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Bias Munjul\/Ceningan (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.459836571729966,
+                        -8.68819432467501,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Brombong (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.863224335940004,
+                        -8.19637442377001,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Buleleng (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.090487719995053,
+                        -8.102591643472522,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Buyuk (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.546617426362445,
+                        -8.674874930747478,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Gilimanuk (Pengumpan Regional)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.436411771985036,
+                        -8.16185388373998,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Kedonganan (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.167498994769971,
+                        -8.757083813802524,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Klungkung (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.432609437385054,
+                        -8.574476867062515,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Kubu (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.579936684825043,
+                        -8.254144428689983,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Kusamba (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.45467955645745,
+                        -8.563123545290011,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Labuhan Amed (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.637887270612509,
+                        -8.329881764945014,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Labuhan Lalang (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.539492050190006,
+                        -8.143020056885007,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Lovina (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.025620075362554,
+                        -8.159584204267503,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Manggis (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.508939402570036,
+                        -8.511930239990022,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Nusa Penida (Toyapakeh) (Pengumpan Regional)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.488557373114986,
+                        -8.676867330452524,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Padangbai (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.509076443127469,
+                        -8.533833952712484,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Pegametan (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.618647017854983,
+                        -8.124802881264998,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Pemaron (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.058852716602473,
+                        -8.13019759747749,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Pengambengan (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.574062076755013,
+                        -8.386110541994981,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Penuktukan (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.358109043237505,
+                        -8.128496524987497,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Sampalan (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.558150820522542,
+                        -8.672072544857485,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Sangsit (Pengumpan Regional)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.131349760292551,
+                        -8.078215086627495,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Sanur (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.261099400807552,
+                        -8.669546761692516,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Serangan (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.237064769219955,
+                        -8.721511031377474,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpan",
+                "REMARK": "Pelabuhan Tanjung Benoa (Pengumpan Lokal)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.218294040157502,
+                        -8.752352218119995,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpul",
+                "REMARK": "Pelabuhan Celukan Bawang (Pengumpul)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.832683956047504,
+                        -8.188304443820016,
+                        0.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Pengumpul",
+                "REMARK": "Pelabuhan Labuhan Amuk\/Tanah Ampo (Pengumpul)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.51764496136002,
+                        -8.506489625472511,
+                        0.0
+                    ]
+                ]
+            }
+        }
+    ]
+}

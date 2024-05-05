@@ -3,7 +3,7 @@ import { SheetContent, Sheet } from "~/components/ui/sheet"
 import { atomWithStorage } from 'jotai/utils'
 import { useAtom } from 'jotai'
 import LandFilters from "~/components/land-filters"
-import MapSettings from "~/components/map-settings"
+import MapSettings from "~/components/property-map-settings"
 
 export const detailsSidebarAtom = atomWithStorage<any>('details_sidebar_data', null)
 
@@ -12,7 +12,7 @@ export default function DetailsSidebar() {
 
   return (
     <Sheet open={detailsSidebarData?.isOpen} onOpenChange={e => setDetailsSidebarData({ ...detailsSidebarData, isOpen: !detailsSidebarData?.isOpen })}>
-      <SheetContent side={detailsSidebarData?.side}>
+      <SheetContent className={`${detailsSidebarData?.size || 'h-full'}`} side={detailsSidebarData?.side}>
         {(() => {
           switch (detailsSidebarData?.content) {
             case 'land-filter':

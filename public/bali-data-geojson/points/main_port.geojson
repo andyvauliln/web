@@ -1,0 +1,29 @@
+{
+    "type": "FeatureCollection",
+    "name": "main_port",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Pelabuhan Utama",
+                "REMARK": "Pelabuhan Benoa (Utama)"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        115.208989870682444,
+                        -8.746272741595021,
+                        0.0
+                    ]
+                ]
+            }
+        }
+    ]
+}

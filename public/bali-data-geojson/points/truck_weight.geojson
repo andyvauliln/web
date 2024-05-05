@@ -1,0 +1,29 @@
+{
+    "type": "FeatureCollection",
+    "name": "truck_weght",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "Jembatan Timbang",
+                "REMARK": "Jembatan Timbang Cekik, Gilimanuk"
+            },
+            "geometry": {
+                "type": "MultiPoint",
+                "coordinates": [
+                    [
+                        114.439916899979949,
+                        -8.186895660057473,
+                        0.0
+                    ]
+                ]
+            }
+        }
+    ]
+}

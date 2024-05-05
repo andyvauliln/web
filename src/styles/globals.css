@@ -93,9 +93,25 @@ dialog:modal {
 }
 
 
-div[mapboxgl-children] {
-  height: 0 !important;
+/* .custom-checkbox input:checked+.checkmark {
+  background-color: #10b981;
+
 }
+
+.custom-checkbox .checkmark:after {
+  transform: scale(0);
+  transition: transform 0.1s ease-in-out;
+}
+
+.custom-checkbox input:checked+.checkmark:after {
+  transform: scale(1);
+
+} */
+
+
+/* div[mapboxgl-children] {
+  height: 0 !important;
+} */
 
 .clerk-sign-in-button {
   background-color: #4CAF50;
@@ -108,6 +124,10 @@ div[mapboxgl-children] {
 
 .clerk-sign-in-button:hover {
   background-color: #3e8e41;
+}
+
+img {
+  border-radius: 50%;
 }
 
 /* color for #379551 */
@@ -268,7 +288,7 @@ div[mapboxgl-children] {
   display: none;
 } */
 
-.tooltip {
+/* .tooltip {
   position: absolute;
   margin: 8px;
   padding: 4px;
@@ -278,4 +298,4 @@ div[mapboxgl-children] {
   font-size: 10px;
   z-index: 9;
   pointer-events: none;
-}
+} */
