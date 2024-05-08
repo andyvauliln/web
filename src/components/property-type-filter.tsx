@@ -8,6 +8,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "~/components/ui/select"
+import ContentTypeSwittcher from "~/components/view-type-swittcher"
 
 const propertyTypeFilter = atomWithStorage<string>('property_type_filters', "land")
 const propertyTypes = [
@@ -18,16 +19,19 @@ const propertyTypes = [
     { value: 'saved', label: 'Saved' },
     { value: 'info', label: 'Info' }
 ];
+export type ContentType = 'Map' | 'List';
+export const contentTypeAtom = atomWithStorage<ContentType>('land_content_type', "Map")
+
 export function PropertyTypeFilter() {
-    const [currentTab, setCurrentTab] = useAtom(propertyTypeFilter)
-    console.log(currentTab, "value")
+    const [currentTab, setCurrentTab] = useAtom<string>(propertyTypeFilter)
+    const [contentType, setContentType] = useAtom<ContentType>(contentTypeAtom)
     const handleChange = (newValue: string) => {
         setCurrentTab(newValue);
     }
 
     return (
-        <footer className='flex items-center justify-between w-full'>
-            <nav className="inline-flex rounded-md shadow-sm" role="group">
+        <nav className='flex items-center justify-between w-full'>
+            <div className="inline-flex rounded-md shadow-sm" role="group">
                 {propertyTypes.map((type, index) => (
                     <button
                         key={type.value}
@@ -40,11 +44,15 @@ export function PropertyTypeFilter() {
                     </button>
                 ))
                 }
-            </nav >
+            </div >
+            <div className="flex items-center">
+                <ContentTypeSwittcher value={contentType} onChange={(): void => {
+                    setContentType(contentType === 'Map' ? 'List' : 'Map');
+                }} />
+                <LanguageSwitcher />
+            </div>
 
-            <LanguageSwitcher />
-
-        </footer>
+        </nav>
     )
 }
 

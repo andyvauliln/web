@@ -4,6 +4,7 @@ import { atomWithStorage } from 'jotai/utils'
 import { useAtom } from 'jotai'
 import LandFilters from "~/components/land-filters"
 import MapSettings from "~/components/property-map-settings"
+import LandDetails from "~/components/land-details"
 
 export const detailsSidebarAtom = atomWithStorage<any>('details_sidebar_data', null)
 
@@ -12,13 +13,15 @@ export default function DetailsSidebar() {
 
   return (
     <Sheet open={detailsSidebarData?.isOpen} onOpenChange={e => setDetailsSidebarData({ ...detailsSidebarData, isOpen: !detailsSidebarData?.isOpen })}>
-      <SheetContent className={`bg-transparent border-none w-auto ${detailsSidebarData?.size || 'h-full'}`} side={detailsSidebarData?.side}>
+      <SheetContent className={`${detailsSidebarData?.bg || 'bg-transparent'} border-none w-auto ${detailsSidebarData?.size || 'h-full'}`} side={detailsSidebarData?.side}>
         {(() => {
           switch (detailsSidebarData?.content) {
             case 'land-filter':
               return <LandFilters />;
             case 'map-settings':
               return <MapSettings />;
+            case 'land-details':
+              return <LandDetails data={detailsSidebarData?.data} />;
             default:
               return <div>Sorry No Content Found.</div>;
           }

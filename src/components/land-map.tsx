@@ -10,6 +10,7 @@ import { useAtom } from 'jotai';
 import { useRef } from 'react';
 import type { MapRef } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import Image from 'next/image';
 const TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
 export default function LandMap({ mapData, onClick }: { mapData?: FeatureCollection | null | undefined, onClick: (feature: Feature | null) => void }) {
@@ -432,47 +433,52 @@ function BaliGeoJsonLayers({ layers, map }: { layers: LayerSettings[], map: Reac
 }
 
 function Popover({ x, y, data }: { x: number, y: number, data: any }) {
-    return <div style={{ left: 10, top: 10 }} className="p-2 opacity-80 pointer-events-none absolute z-10 inline-block w-64 text-sm text-gray-500 border border-gray-800 rounded-lg shadow-sm dark:text-gray-400 bg-black dark:border-gray-6000">
-        <div className="flex justify-between items-center">
-            <div className="text-base mb-2 font-semibold leading-none text-white mt-2">Land Details</div>
-            <div className='flex gap-2'>
-                <span className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground shadow'>Rent</span>
-                <span className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground '>Buy</span>
+    return <div style={{ left: 10, top: 10 }} className="p-1 flex flex-col pointer-events-none absolute z-10 ">
+        <div className='opacity-80 p-2 inline-block w-64 text-sm text-gray-500 border border-gray-800 rounded-lg shadow-sm bg-black'>
+            <div className="flex justify-between items-center">
+                <div className="text-base mb-2 font-semibold leading-none text-white mt-2">Land Details</div>
+                <div className='flex gap-2'>
+                    <span className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground shadow'>Rent</span>
+                    <span className='inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground '>Buy</span>
+                </div>
             </div>
+            <Separator className='my-2' orientation='horizontal' />
+            <ul className="flex flex-col text-sm">
+                <li className="me-2">
+                    <span className='mr-2 font-semibold'>Land Size:</span>
+                    <span className="text-white">799m2</span>
+                </li>
+                <li className="me-2">
+                    <span className='mr-2 font-semibold '>Zone:</span>
+                    <span className="text-white">Yellow</span>
+                </li>
+                <li className="me-2">
+                    <span className='mr-2 font-semibold '>Total Price:</span>
+                    <span className="text-white">234$</span>
+                </li>
+                <li className="me-2">
+                    <span className='mr-2 font-semibold '>Price per m2 :</span>
+                    <span className="text-white">234$</span>
+                </li>
+                <li className="me-2">
+                    <span className='mr-2 font-semibold '>Price per m2, yearly:</span>
+                    <span className=" text-white">234$</span>
+                </li>
+                <li className="me-2">
+                    <span className='mr-2 font-semibold '>Partly:</span>
+                    <span className=" text-white">Possible</span>
+                </li>
+                <li className="me-2">
+                    <span className='mr-2 font-semibold'>Negotiable:</span>
+                    <span className=" text-white">Yes</span>
+                </li>
+            </ul>
+            <Separator className='my-2' orientation='horizontal' />
+            <span>Click to get more details...</span>
         </div>
-        <Separator className='my-2' orientation='horizontal' />
-        <ul className="flex flex-col text-sm">
-            <li className="me-2">
-                <span className='mr-2 font-semibold'>Land Size:</span>
-                <span className="text-white">799m2</span>
-            </li>
-            <li className="me-2">
-                <span className='mr-2 font-semibold '>Zone:</span>
-                <span className="text-white">Yellow</span>
-            </li>
-            <li className="me-2">
-                <span className='mr-2 font-semibold '>Total Price:</span>
-                <span className="text-white">234$</span>
-            </li>
-            <li className="me-2">
-                <span className='mr-2 font-semibold '>Price per m2 :</span>
-                <span className="text-white">234$</span>
-            </li>
-            <li className="me-2">
-                <span className='mr-2 font-semibold '>Price per m2, yearly:</span>
-                <span className=" text-white">234$</span>
-            </li>
-            <li className="me-2">
-                <span className='mr-2 font-semibold '>Partly:</span>
-                <span className=" text-white">Possible</span>
-            </li>
-            <li className="me-2">
-                <span className='mr-2 font-semibold'>Negotiable:</span>
-                <span className=" text-white">Yes</span>
-            </li>
-        </ul>
-        <Separator className='my-2' orientation='horizontal' />
-        <span>Click to get more details...</span>
+        <div className="my-4">
+            <Image className='rounded-md' src="/land_sideman.gif" alt="Your GIF" width={300} height={200} />
+        </div>
     </div>
 }
 

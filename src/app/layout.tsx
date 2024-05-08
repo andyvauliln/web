@@ -61,7 +61,7 @@ export default function RootLayout({
 }
 function Footer() {
   return (
-    <footer id="footer-content" className="flex items-center w-full p-4 h-[4rem]">
+    <footer id="footer-content" className="flex items-center w-full p-4 h-[4rem] border-t border-gray-200">
     </footer>
   );
 }
