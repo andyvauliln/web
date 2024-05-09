@@ -4,7 +4,6 @@ import { CardHeader, CardContent, CardFooter, Card } from "~/components/ui/card"
 import { Button } from "~/components/ui/button"
 import DetailsSidebar, { detailsSidebarAtom } from "~/components/details-sidebar";
 import LandMap from "./land-map"
-import DeckMap from "../../archive/deck-map"
 import LandList from "./land-list"
 import { atomWithStorage } from 'jotai/utils'
 import { useAtom } from 'jotai'
@@ -16,9 +15,10 @@ import { PropertyTypeFilter, contentTypeAtom, ContentType } from "./property-typ
 import SubHeader from "./sub-header";
 import { createPortal } from "react-dom";
 import { Suspense } from "react";
-import type { CesiumType } from './cesium-component';
+import type { CesiumType } from './cesium-map';
+import DeckMap from './deck-map';
 import dynamic from 'next/dynamic';
-const CesiumDynamicComponent = dynamic(() => import('./cesium-component'), {
+const CesiumDynamicComponent = dynamic(() => import('./cesium-map'), {
     ssr: false
 });
 
@@ -131,7 +131,8 @@ export default function TabsLandContent() {
                 </CardHeader>
                 <CardContent className="flex-grow relative h-[calc(100%-4rem)]">
                     <Suspense fallback={<div>Loading...</div>}>
-                        {landData && (contentType === 'Map' ? CesiumJs ? <CesiumDynamicComponent CesiumJs={CesiumJs} mapData={landData} onClick={onLandClick} /> : null : <LandList />)}
+                        {/* {landData && (contentType === 'Map' ? CesiumJs ? <CesiumDynamicComponent CesiumJs={CesiumJs} mapData={landData} onClick={onLandClick} /> : null : <LandList />)} */}
+                        {contentType === 'Map' ? <DeckMap mapData={landData} onClick={onLandClick} /> : <LandList />}
                     </Suspense>
 
 

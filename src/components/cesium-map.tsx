@@ -158,10 +158,10 @@ const initialCameraPosition = {
 const asyncLoadData = async (CesiumJs: CesiumType, cesiumViewer: Viewer, mapData: FeatureCollection | null | undefined) => {
     console.log(mapData?.features[0], "MapData")
    cesiumViewer.dataSources.add(Cesium.GeoJsonDataSource.load(mapData, {
-    stroke: Cesium.Color.HOTPINK,
-    fill: Cesium.Color.PINK,
-    strokeWidth: 3
-}));
+        stroke: Cesium.Color.HOTPINK,
+        fill: Cesium.Color.PINK,
+        strokeWidth: 3
+    }));
 };
 
 const loadTileset = async (CesiumJs: CesiumType, cesiumViewer: Viewer) => {

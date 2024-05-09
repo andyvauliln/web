@@ -244,15 +244,16 @@ export function getRandomLand() {
         comments: getRandomComments(),
 
         price: {
-            yearly_rent_price: `$${getRandomNumber()}/m2`,
+            yearly_rent_price: `$${getRandomNumber()}`,
             buy_price: `$${getRandomNumber()}`,
+            price_per_m2: `$${getRandomNumber()}`,
             price_category: getRandomPriceCategory(),
         },
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
         land_bools: {
             is_details: true,// getRandomBool(),
-            is_negotibale: getRandomBool(),
+            is_negotiable: getRandomBool(),
             is_possible_to_buy_part: getRandomBool(),
             is_user_owner: false && getRandomBool(),
             is_for_buy: getRandomBool(),
