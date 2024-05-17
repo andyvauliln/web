@@ -80,12 +80,11 @@ const AccordionContent = React.forwardRef<
 
 AccordionContent.displayName = AccordionPrimitive.Content.displayName
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, ChevronDown, AccordionTriggerCustom }
-
 function ActionArrowIcon() {
   return <svg className="w-6 h-6 shrink-0 transition-transform duration-200 text-inherit" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16.153 19 21 12l-4.847-7H3l4.848 7L3 19h13.153Z" />
   </svg>
-
-
 }
+
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, ChevronDown, AccordionTriggerCustom, ActionArrowIcon }
+

@@ -9,9 +9,9 @@ const filterOptions = [
     // { title: "Lands", value: "lands", color: [255, 255, 255, 128], type: "geojson_file", feature_type: "Polygon", className: "" },
     { title: "Bali Regions", value: "bali_regions", color: [152, 251, 152, 128], type: "geojson_file", feature_type: "Polygon" },
     // { title: "Buildings", value: "buildings", color: [255, 255, 255, 128], type: "map_layer", feature_type: "Fill Extrusion", className: "border-b border-gray-500 pb-2" },
-    // { title: "Main Roads", value: "main_roads", color: [48, 49, 48, 128], type: "map_layer", feature_type: "MapLine", className: "" },
-    // { title: "Secondary Roads", value: "secondary_roads", color: [255, 215, 0, 128], type: "map_layer", feature_type: "MapLine", className: "" },
-    // { title: "Motorbike Roads", value: "motorbike_roads", color: [255, 99, 71, 128], type: "map_layer", feature_type: "MapLine", className: "" },
+    { title: "Main Roads", value: "main_roads", color: [48, 49, 48, 128], type: "map_layer", feature_type: "MapLine", className: "" },
+    { title: "Secondary Roads", value: "secondary_roads", color: [255, 215, 0, 128], type: "map_layer", feature_type: "MapLine", className: "" },
+    { title: "Motorbike Roads", value: "motorbike_roads", color: [255, 99, 71, 128], type: "map_layer", feature_type: "MapLine", className: "" },
     { title: "Transport Lines", value: "transport_lines", color: [50, 205, 50, 128], type: "geojson_file", feature_type: "Line", className: "" },
     // { title: "Waterways", value: "waterway", color: [255, 255, 255, 128], type: "map_layer", feature_type: "MapLine", className: "border-b border-gray-500 pb-2" },
     // Special Areas

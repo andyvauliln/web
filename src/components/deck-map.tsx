@@ -9,7 +9,7 @@ import { LineLayer, GeoJsonLayer, BitmapLayer, IconLayer } from '@deck.gl/layers
 import { Tile3DLayer, MVTLayer } from '@deck.gl/geo-layers';
 import type { Tileset3D } from '@loaders.gl/tiles';
 import { _TerrainExtension as TerrainExtension, DataFilterExtension } from '@deck.gl/extensions';
-import { Popover, HoverInfo, GOOGLE_MAP_API_KEY, TILESET_URL, roadColorMapping, lightingEffect, MAP_BOX_TOKEN, customFetch } from './deck-map-settings';
+import { Popover, HoverInfo, GOOGLE_MAP_API_KEY, TILESET_URL, googleCustomFetch, roadColorMapping, lightingEffect, RoadClassType, MAP_BOX_TOKEN, customFetch } from './deck-map-settings';
 import type { AccessorContext } from '@deck.gl/core';
 import type { _TileLoadProps as TileLoadProps } from '@deck.gl/geo-layers';
 interface MapProps {
@@ -61,11 +61,13 @@ export default function DeckMap({ mapData, onClick }: MapProps) {
                 fetch: {
                     headers: {
                         'X-GOOG-API-KEY': GOOGLE_MAP_API_KEY
-                    }
-                }
+                    },
+                    cashe: "force-cache"
+                },
             },
+            // fetch: googleCustomFetch,
             onTilesetLoad: (tileset3d: Tileset3D) => {
-                console.log(tileset3d, 'tileset3d')
+                // console.log(tileset3d, 'tileset3d')
                 tileset3d.options.onTraversalComplete = (selectedTiles) => {
                     const credits = new Set();
                     selectedTiles.forEach(tile => {
@@ -77,18 +79,8 @@ export default function DeckMap({ mapData, onClick }: MapProps) {
             },
             operation: 'terrain+draw',
         }),
-        // new BitmapLayer({
-        //     id: 'mapbox-streets',
-        //     bounds: [114.5615, -8.8095, 115.7364, -8.0922],
-        //     image: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}@2x?access_token=${MAP_BOX_TOKEN}`,
-        //     minZoom: 0,
-        //     extensions: [
-        //         new TerrainExtension(),
-        //     ],
-        //     maxZoom: 19,
-        //     tileSize: 256
-        // }),
-        // new MVTLayer({
+
+        // mapLayers.some(layer => layer.type === "map_layer" && layer.value.includes("road")) && new MVTLayer({
         //     id: 'roads',
         //     bounds: [114.5615, -8.8095, 115.7364, -8.0922],
         //     data: `https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.mvt?access_token=${MAP_BOX_TOKEN}`,
@@ -104,53 +96,46 @@ export default function DeckMap({ mapData, onClick }: MapProps) {
         //     lineWidthMinPixels: 2,
         //     lineWidthMaxPixels: 5,
         //     lineWidthScale: 0.5,
-        //     getLineColor: (feature) => roadColorMapping[feature.properties.class] || [255, 255, 255]
+        //     getLineColor: (feature: Feature<Geometry, GeoJsonProperties>): [number, number, number] => {
+        //         const roadClass = feature.properties?.class as RoadClassType;
+        //         if (roadClass && roadColorMapping.hasOwnProperty(roadClass)) {
+        //             return roadColorMapping[roadClass] as [number, number, number];
+        //         }
+        //         return [255, 255, 255]; // Ensure this is a tuple of three numbers
+        //     },
         //     // filter: ({ properties }: { properties: { class: string } }) => ['motorway', 'primary', 'secondary', 'street'].includes(properties.class),
         // }),
-        new MVTLayer({
-            id: 'rivers',
-            data: `https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.mvt?access_token=${MAP_BOX_TOKEN}`,
-            fetch: customFetch,
-            minZoom: 0,
-            maxZoom: 19,
-            bounds: [114.5615, -8.8095, 115.7364, -8.0922],
-            extensions: [
-                new TerrainExtension(),
-                new DataFilterExtension({ filterSize: 1 }),
-            ],
-            sourceLayer: 'water',
-            getLineColor: [30, 144, 255], // Dodger blue for water
-            lineWidthMinPixels: 2,
-            getFillColor: [0, 0, 0, 0],
-            lineWidthMaxPixels: 5,
-            lineWidthScale: 0.5,
-            filterRange: [1, 1],
-            // getFilterValue: (feature: any) => {
-            //     console.log(feature.type, 'feature')
-            //     return feature.properties.type === 'river' ? 1 : 0;
-            // },
-        }),
         // new MVTLayer({
-        //     id: 'parks',
+        //     id: 'rivers',
         //     data: `https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.mvt?access_token=${MAP_BOX_TOKEN}`,
+        //     fetch: customFetch,
         //     minZoom: 0,
         //     maxZoom: 19,
         //     bounds: [114.5615, -8.8095, 115.7364, -8.0922],
-        //     sourceLayer: 'landuse',
         //     extensions: [
         //         new TerrainExtension(),
+        //         // new DataFilterExtension({ filterSize: 1 }),
         //     ],
-        //     getFillColor: [34, 139, 34], // Forest green for parks
-        //     getLineColor: [0, 100, 0], // Dark green for park boundaries
+        //     sourceLayer: 'water',
+        //     //getLineColor: [30, 144, 255], // Dodger blue for water
+        //     lineWidthMinPixels: 2,
+        //     getFillColor: [0, 0, 0, 0],
         //     lineWidthMaxPixels: 5,
         //     lineWidthScale: 0.5,
-        //     lineWidthMinPixels: 2,
-        //     filter: ({ properties }: { properties: { class: string } }) => {
-        //         console.log(properties, 'properties')
-        //         return properties.class === 'park'
-
+        //     // filterRange: [1, 1],
+        //     getLineColor: (feature) => {
+        //         console.log(feature.properties.class, feature.properties.type, 'type of point')
+        //         if (feature.properties.class === 'water') {
+        //             return [30, 144, 255]
+        //         }
+        //         return [0, 0, 0, 0]
         //     },
+        // getFilterValue: (feature: any) => {
+        //     console.log(feature.type, 'feature')
+        //     return feature.properties.type === 'river' ? 1 : 0;
+        // },
         // }),
+
         // new GeoJsonLayer({
         //     id: 'geojson-layer',
         //     data: mapData || [],
@@ -165,17 +150,23 @@ export default function DeckMap({ mapData, onClick }: MapProps) {
         //     highlightColor: [255, 255, 255, 75],
         //     getLineColor: [255, 255, 255, 255],
         //     getLineWidth: 2,
-        //     getFillColor: ((info: HoverInfo): [number, number, number, number] =>
-        //         info.object === hoverInfo ? [255, 255, 255, 255] : [0, 0, 0, 0]) as unknown as [number, number, number, number],
+        //     getFillColor: (info: { object: Feature<Geometry, GeoJsonProperties> }): [number, number, number] => {
+        //         return info?.object?.id === hoverInfo?.object?.id ? [255, 255, 255] : [0, 0, 0];
+        //     },
         //     opacity: 0.2,
-        //     onHover: info => setHoverInfo(info.object ? {
-        //         x: info.x,
-        //         y: info.y,
-        //         object: info.object
-        //     } : null)
+        //     onClick: (info) => {
+        //         onClick(info.object)
+        //     },
+        //     onHover: (info: HoverInfo) => {
+        //         setHoverInfo(info.object ? {
+        //             x: info.x,
+        //             y: info.y,
+        //             object: info.object
+        //         } : null);
+        //     }
         // }),
 
-        // mapLayers.map(layer => {
+        // mapLayers.filter(layer => layer.type === "geojson_file").map(layer => {
 
         //     if (layer.feature_type === "Point") {
         //         return new GeoJsonLayer({
@@ -199,7 +190,7 @@ export default function DeckMap({ mapData, onClick }: MapProps) {
         //             iconSizeMaxPixels: 50,
         //             iconSizeScale: 0.5,
         //             getPosition: (d: Feature<Geometry, GeoJsonProperties>) => {
-        //                 console.log(d, 'd')
+        //                 // console.log(d, 'd')
         //                 if ('coordinates' in d.geometry) {
         //                     return d.geometry.coordinates;
         //                 }
@@ -268,7 +259,6 @@ export default function DeckMap({ mapData, onClick }: MapProps) {
         initialViewState={viewState}
         onViewStateChange={({ viewState }) => handleViewStateChange(viewState)}
         controller={true}
-        // getTooltip={getTooltip}
         layers={[layers]}
     // effects={[lightingEffect]}
     >

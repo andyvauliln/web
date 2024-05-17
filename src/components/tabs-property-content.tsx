@@ -64,6 +64,7 @@ export default function TabsLandContent() {
     }, [CesiumJs]);
 
     const onLandClick = (feature: Feature | null) => {
+        console.log(feature, 'feature')
         setDetailsSidebarData({
             data: feature,
             isOpen: true,

@@ -10,6 +10,7 @@ export const detailsSidebarAtom = atomWithStorage<any>('details_sidebar_data', n
 
 export default function DetailsSidebar() {
   const [detailsSidebarData, setDetailsSidebarData] = useAtom(detailsSidebarAtom)
+  console.log(detailsSidebarData, 'detailsSidebarData')
 
   return (
     <Sheet open={detailsSidebarData?.isOpen} onOpenChange={e => setDetailsSidebarData({ ...detailsSidebarData, isOpen: !detailsSidebarData?.isOpen })}>

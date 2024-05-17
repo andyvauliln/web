@@ -10,6 +10,9 @@ import { getRandomLand } from './mocks';
 import type { TileLoadProps } from '@deck.gl/geo-layers';
 import type { BinaryFeatureCollection } from '@loaders.gl/schema';
 import { parse } from '@loaders.gl/core';
+import { Feature, Polygon, GeoJsonProperties } from 'geojson';
+
+export type RoadClassType = keyof typeof roadColorMapping;
 
 export const roadColorMapping = {
     motorway: [255, 0, 0], // Red
@@ -49,7 +52,7 @@ export const CESIUM_ION_TOKEN = process.env.NEXT_PUBLIC_CESIUM_TOKEN1
 export const MAP_BOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
 export function Popover({ x, y, data }: { x: number, y: number, data: any }) {
-    console.log(data, 'data')
+    // console.log(data, 'data')
     const land = React.useMemo(() => {
         return getRandomLand();
     }, [data.properties.passiveParcelId]);
@@ -106,7 +109,7 @@ export function Popover({ x, y, data }: { x: number, y: number, data: any }) {
 export interface HoverInfo {
     x: number;
     y: number;
-    object: any;
+    object: Feature; //Feature<Polygon, GeoJsonProperties>;
 }
 
 
@@ -128,6 +131,50 @@ export async function customFetch(url: string, options: any): Promise<BinaryFeat
     const tileKey = `tile-${z}-${x}-${y}`;
 
     console.log("Tile coordinates extracted:", tileKey);
+
+    // Try to load from IndexedDB first
+    const storedTile = await getTileFromDB(tileKey);
+    if (storedTile) {
+        console.log("Loaded from DB:", tileKey);
+        // Parse the ArrayBuffer from IndexedDB before returning
+        return parse(storedTile, MVTLoader, options.loadOptions);
+    }
+
+    // Fetch from network if not in IndexedDB
+    console.log("Fetching from network:", tileKey);
+    const response = await fetch(url, {
+        method: 'GET',
+        signal: options.signal
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const arrayBuffer = await response.arrayBuffer();
+    await setTileInDB(tileKey, arrayBuffer); // Store the fetched tile in IndexedDB
+    console.log("Fetched from network:", tileKey, arrayBuffer);
+
+    // Parse the ArrayBuffer before returning
+    const parsedData = await parse(arrayBuffer, MVTLoader, options.loadOptions);
+    console.log("Parsed data:", parsedData);
+    return parsedData;
+}
+
+export async function googleCustomFetch(url: string, options: any): Promise<BinaryFeatureCollection> {
+    console.log('googleCustomFetch', url, options)
+    const match = url.match(/\/(\d+)\/(\d+)\/(\d+)\.mvt/);
+    if (!match) {
+        throw new Error("URL format is incorrect, cannot extract tile coordinates");
+    }
+    const z = parseInt(match[1], 10);
+    const x = parseInt(match[2], 10);
+    const y = parseInt(match[3], 10);
+    const tileKey = `google-tile-${z}-${x}-${y}`;
+
+    console.log("Tile coordinates extracted:", tileKey);
+
+    return null;
 
     // Try to load from IndexedDB first
     const storedTile = await getTileFromDB(tileKey);

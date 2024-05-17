@@ -11,6 +11,7 @@ import {
     AccordionItem,
     AccordionTrigger,
     AccordionTriggerCustom,
+    ActionArrowIcon
 } from "~/components/ui/accordion"
 
 
@@ -25,9 +26,6 @@ export default function LandDetails({ data }: { data: any }) {
             <SheetTitle>Land Details</SheetTitle>
             {data["land"].land_bools.is_details ? <LandWithoutDetails data={data} /> :
                 data["land"].land_bools.is_user_owner ? <OwnerLandView data={data} /> : <UserLandView data={data} />}
-
-
-
         </div>
     )
 }
@@ -60,31 +58,49 @@ function LandWithoutDetails(data: any) {
                     {land?.ownership_type?.description}
                 </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-2">
-                <AccordionTrigger>Land Zone: <span className={land?.land_zone?.color}>{land?.land_zone?.title}</span></AccordionTrigger>
+            <AccordionItem value="item-2" className='hover:border-t hover:border-green-700'>
+                <AccordionTriggerCustom className='hover:text-green-700' >
+                    <span className='font-bold '>Land Zone:</span>
+                    <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">{land?.land_zone?.title}</span>
+                </AccordionTriggerCustom>
                 <AccordionContent>
                     {land?.land_zone?.description}
                 </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3">
-                <AccordionTrigger>Request Land</AccordionTrigger>
+            <AccordionItem value="item-3" className='hover:border-t hover:border-green-700'>
+                <AccordionTriggerCustom className='hover:text-green-700' >
+                    <span className='font-bold '>Request Land:</span>
+                    <ActionArrowIcon />
+                </AccordionTriggerCustom>
                 <AccordionContent>
                     <div>Information for Request Land</div>
-                    <Button className='mt-2'>Process</Button>
+                    <div className="flex justify-end">
+                        <Button className='mt-2'>Process</Button>
+                    </div>
                 </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-4">
-                <AccordionTrigger>Request Drone Video</AccordionTrigger>
+            <AccordionItem value="item-4" className='hover:border-t hover:border-green-700'>
+                <AccordionTriggerCustom className='hover:text-green-700' >
+                    <span className='font-bold '>Request Drone Video:</span>
+                    <ActionArrowIcon />
+                </AccordionTriggerCustom>
                 <AccordionContent>
                     <div>Information for Request Drone Video</div>
-                    <Button className='mt-2'>Process</Button>
+                    <div className="flex justify-end">
+                        <Button className='mt-2'>Process</Button>
+                    </div>
                 </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-5">
-                <AccordionTrigger>Request Land Ownership</AccordionTrigger>
+            <AccordionItem value="item-5" className='hover:border-t hover:border-green-700'>
+                <AccordionTriggerCustom className='hover:text-green-700' >
+                    <span className='font-bold '>Request Land Ownership:</span>
+                    <ActionArrowIcon />
+                </AccordionTriggerCustom>
                 <AccordionContent>
-                    <div>Information for Request Land Ownership</div>
-                    <Button className='mt-2'>Process</Button>
+                    <div>Information for Request Drone Video</div>
+                    <div className="flex justify-end">
+                        <Button className='mt-2'>Process</Button>
+                    </div>
                 </AccordionContent>
             </AccordionItem>
         </Accordion>
