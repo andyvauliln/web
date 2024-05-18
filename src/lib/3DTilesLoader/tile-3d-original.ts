@@ -24,7 +24,6 @@ import { load } from '@loaders.gl/core';
 import { MeshAttributes } from '@loaders.gl/schema';
 import { Tileset3D, Tile3D, TILE_TYPE } from '@loaders.gl/tiles';
 import { Tiles3DLoader } from '@loaders.gl/3d-tiles';
-import { saveData, getData } from './index-db';
 
 const SINGLE_DATA = [0];
 
@@ -36,9 +35,9 @@ const defaultProps: DefaultProps<Tile3DLayerProps> = {
     data: '',
     loader: Tiles3DLoader,
 
-    onTilesetLoad: { type: 'function', value: tileset3d => { console.log('onTilesetLoad called with tileset3d:', tileset3d); } },
-    onTileLoad: { type: 'function', value: tileHeader => { console.log('onTileLoad called with tileHeader:', tileHeader); } },
-    onTileUnload: { type: 'function', value: tileHeader => { console.log('onTileUnload called with tileHeader:', tileHeader); } },
+    onTilesetLoad: { type: 'function', value: tileset3d => { } },
+    onTileLoad: { type: 'function', value: tileHeader => { } },
+    onTileUnload: { type: 'function', value: tileHeader => { } },
     onTileError: { type: 'function', value: (tile, message, url) => { } },
     _getMeshColor: { type: 'function', value: tileHeader => [255, 255, 255] }
 };
@@ -95,20 +94,13 @@ export default class Tile3DLayer<DataT = any, ExtraPropsT extends {} = {}> exten
         if ('onTileLoadFail' in this.props) {
             log.removed('onTileLoadFail', 'onTileError')();
         }
+        // prop verification
         this.state = {
             layerMap: {},
             tileset3d: null,
             activeViewports: {},
             lastUpdatedViewports: null
         };
-
-        this.loadLayerMapFromCache();
-    }
-    async loadLayerMapFromCache() {
-        const cachedLayerMap = await getData('layerMap');
-        if (cachedLayerMap) {
-            this.setState({ layerMap: cachedLayerMap });
-        }
     }
 
     get isLoaded(): boolean {
@@ -179,9 +171,8 @@ export default class Tile3DLayer<DataT = any, ExtraPropsT extends {} = {}> exten
         }
     }
 
-    private async _loadTileset(tilesetUrl: string) {
+    private async _loadTileset(tilesetUrl) {
         const { loadOptions = {} } = this.props;
-
 
         // TODO: deprecate `loader` in v9.0
         // @ts-ignore
@@ -215,7 +206,7 @@ export default class Tile3DLayer<DataT = any, ExtraPropsT extends {} = {}> exten
 
         this.setState({
             tileset3d,
-            // layerMap: {}
+            layerMap: {}
         });
 
         this._updateTileset(this.state.activeViewports);
@@ -390,48 +381,33 @@ export default class Tile3DLayer<DataT = any, ExtraPropsT extends {} = {}> exten
         );
     }
 
-
-    async cacheLayerMap(): Promise<void> {
-        try {
-            await saveData('layerMap', this.state.layerMap);
-            console.log('LayerMap cached successfully.');
-        } catch (error) {
-            console.error('Failed to cache layerMap:', error);
-        }
-    }
-
     renderLayers(): Layer | null | LayersList {
         const { tileset3d, layerMap } = this.state;
         if (!tileset3d) {
             return null;
         }
-        console.log('layerMap:', layerMap);
 
-        const layers = (tileset3d.tiles as Tile3D[]).map(tile => {
-            let layerCache = layerMap[tile.id] || { tile };
-            let { layer } = layerCache;
-            if (tile.selected) {
-                if (!layer) {
-                    // Create layer if it does not exist
-                    layer = this._getSubLayer(tile);
-                } else if (layerCache.needsUpdate) {
-                    // Re-render layer if properties have changed
-                    layer = this._getSubLayer(tile, layer);
-                    layerCache.needsUpdate = false;
+        // loaders.gl doesn't provide a type for tileset3d.tiles
+        return (tileset3d.tiles as Tile3D[])
+            .map(tile => {
+                const layerCache = (layerMap[tile.id] = layerMap[tile.id] || { tile });
+                let { layer } = layerCache;
+                if (tile.selected) {
+                    // render selected tiles
+                    if (!layer) {
+                        // create layer
+                        layer = this._getSubLayer(tile);
+                    } else if (layerCache.needsUpdate) {
+                        // props have changed, rerender layer
+                        layer = this._getSubLayer(tile, layer);
+                        layerCache.needsUpdate = false;
+                    }
                 }
-            }
-
-            layerCache.layer = layer;
-            layerMap[tile.id] = layerCache; // Update the layerMap with the new or updated layer
-            return layer;
-        }).filter(Boolean);
-
-        // Schedule a non-blocking save of the layerMap
-        setTimeout(() => this.cacheLayerMap(), 0);
-
-        return layers;
+                layerCache.layer = layer;
+                return layer;
+            })
+            .filter(Boolean);
     }
-
 }
 
 function getMeshGeometry(contentAttributes: MeshAttributes): MeshAttributes {
@@ -454,27 +430,3 @@ function getMeshGeometry(contentAttributes: MeshAttributes): MeshAttributes {
     }
     return attributes;
 }
-
-
-// async getOrAddTile(tileId: string): Promise<any> {
-//     // Attempt to retrieve the tile from the layerMap in memory
-//     let layer = this.state.layerMap[tileId];
-
-//     if (!layer) {
-//         // If not found in memory, try to retrieve the cached layerMap from IndexedDB
-//         const cachedLayerMap = await getData('layerMap');
-//         if (cachedLayerMap && cachedLayerMap[tileId]) {
-//             layer = cachedLayerMap[tileId];
-//             // Update the in-memory layerMap
-//             this.state.layerMap[tileId] = layer;
-//             console.log('Tile retrieved from cache.');
-//         } else {
-//             // If not found in cache, create a new layer (this logic depends on your application)
-//             layer = this.createTileLayer(tileId);
-//             this.state.layerMap[tileId] = layer;
-//             console.log('New tile layer created and added.');
-//         }
-//     }
-
-//     return layer;
-// }

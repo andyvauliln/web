@@ -6,7 +6,8 @@ import type { FeatureCollection, Feature, Geometry, GeoJsonProperties } from 'ge
 import { mapSettingsAtom, mapLayersAtom, LayerSettings, zoomAtom, MapSettings } from './property-map-settings';
 import { useAtom } from 'jotai';
 import { LineLayer, GeoJsonLayer, BitmapLayer, IconLayer } from '@deck.gl/layers';
-import { Tile3DLayer, MVTLayer } from '@deck.gl/geo-layers';
+import { MVTLayer } from '@deck.gl/geo-layers';
+import Tile3DLayer from '~/lib/3DTilesLoader/tile-3d-layer';
 import type { Tileset3D } from '@loaders.gl/tiles';
 import { _TerrainExtension as TerrainExtension, DataFilterExtension } from '@deck.gl/extensions';
 import { Popover, HoverInfo, GOOGLE_MAP_API_KEY, TILESET_URL, googleCustomFetch, roadColorMapping, lightingEffect, RoadClassType, MAP_BOX_TOKEN, customFetch } from './deck-map-settings';
@@ -16,21 +17,6 @@ interface MapProps {
     mapData?: FeatureCollection | null | undefined;
     onClick: (feature: Feature | null) => void;
 }
-
-// export async function customTileLoader(props: TileLoadProps): Promise<ArrayBuffer | null> {
-//     console.log('customTileLoader called with props:', props);
-//     try {
-//         const response = await fetch(props.url);
-//         if (!response.ok) {
-//             console.error('Failed to fetch tile:', response.statusText);
-//             return null;
-//         }
-//         return await response.arrayBuffer();
-//     } catch (error) {
-//         console.error('Error fetching tile:', error);
-//         return null;
-//     }
-// }
 
 export default function DeckMap({ mapData, onClick }: MapProps) {
     const [mapSettings, setMapSettings] = useAtom<MapSettings>(mapSettingsAtom)
@@ -136,35 +122,35 @@ export default function DeckMap({ mapData, onClick }: MapProps) {
         // },
         // }),
 
-        // new GeoJsonLayer({
-        //     id: 'geojson-layer',
-        //     data: mapData || [],
-        //     pickable: true,
-        //     stroked: true,
-        //     extensions: [
-        //         new TerrainExtension(),
-        //     ],
-        //     filled: true,
-        //     lineWidthMinPixels: 1,
-        //     autoHighlight: true,
-        //     highlightColor: [255, 255, 255, 75],
-        //     getLineColor: [255, 255, 255, 255],
-        //     getLineWidth: 2,
-        //     getFillColor: (info: { object: Feature<Geometry, GeoJsonProperties> }): [number, number, number] => {
-        //         return info?.object?.id === hoverInfo?.object?.id ? [255, 255, 255] : [0, 0, 0];
-        //     },
-        //     opacity: 0.2,
-        //     onClick: (info) => {
-        //         onClick(info.object)
-        //     },
-        //     onHover: (info: HoverInfo) => {
-        //         setHoverInfo(info.object ? {
-        //             x: info.x,
-        //             y: info.y,
-        //             object: info.object
-        //         } : null);
-        //     }
-        // }),
+        new GeoJsonLayer({
+            id: 'geojson-layer',
+            data: mapData || [],
+            pickable: true,
+            stroked: true,
+            extensions: [
+                new TerrainExtension(),
+            ],
+            filled: true,
+            lineWidthMinPixels: 1,
+            autoHighlight: true,
+            highlightColor: [255, 255, 255, 75],
+            getLineColor: [255, 255, 255, 255],
+            getLineWidth: 2,
+            getFillColor: (info: { object: Feature<Geometry, GeoJsonProperties> }): [number, number, number] => {
+                return info?.object?.id === hoverInfo?.object?.id ? [255, 255, 255] : [0, 0, 0];
+            },
+            opacity: 0.2,
+            onClick: (info) => {
+                onClick(info.object)
+            },
+            onHover: (info: HoverInfo) => {
+                setHoverInfo(info.object ? {
+                    x: info.x,
+                    y: info.y,
+                    object: info.object
+                } : null);
+            }
+        }),
 
         // mapLayers.filter(layer => layer.type === "geojson_file").map(layer => {
 

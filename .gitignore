@@ -43,3 +43,6 @@ yarn-error.log*
 
 # Sentry Config File
 .sentryclirc
+
+public/bali-data-geojson/poligons/agricultural_lands.geojson
+public/bali-data-geojson/poligons/rpr7.geojson
