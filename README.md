@@ -45,3 +45,15 @@ Today:
   https://api.github.com/repos/USERNAME/REPOSITORY/dispatches \
   -d '{"event_type":"run-script"}'
 ```
+
+public/bali-data-geojson/poligons/agricultural_lands.geojson
+public/bali-data-geojson/poligons/rpr7.geojson
+
+
+git filter-branch --force --index-filter \
+  "git rm --cached --ignore-unmatch public/blender-4.1.1-macos-x64.dmg" \
+  --prune-empty --tag-name-filter cat -- --all
+
+  blender-4.1.1-macos-x64.dmg
+
+  prj_xFIOexhGY2fWiYhkrv2udyvUoYtA
