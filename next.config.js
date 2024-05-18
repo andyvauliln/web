@@ -79,7 +79,7 @@ const config = withSentryConfig(
     // Suppresses source map uploading logs during build
     silent: true,
     org: "ouroboros-q2",
-    project: "mama-bali",
+    project: "javascript-nextjs",
   },
   {
     // For all available options, see:
