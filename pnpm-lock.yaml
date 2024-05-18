@@ -50,9 +50,6 @@ dependencies:
   '@loaders.gl/tiles':
     specifier: ^4.2.1
     version: 4.2.1(@loaders.gl/core@4.2.1)
-  '@luma.gl/engine':
-    specifier: ^9.0.14
-    version: 9.0.14(@luma.gl/core@9.0.11)
   '@radix-ui/react-accordion':
     specifier: ^1.1.2
     version: 1.1.2(@types/react-dom@18.2.23)(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
